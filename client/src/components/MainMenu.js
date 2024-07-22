@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './MainMenu.css';
 import axios from 'axios';
 
@@ -7,6 +8,7 @@ const MainMenu = () => {
   const [pokemon, setPokemon] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [showPokemon, setShowPokemon] = useState(true);
+  const navigate = useNavigate();
 
   const typeColors = {
     normal: "#A4A4A4",
@@ -31,30 +33,22 @@ const MainMenu = () => {
 
   useEffect(() => {
     axios.get('http://localhost:3001/api/pokemon')
-      .then(response => {
-        setPokemon(response.data);
-      })
+      .then(response => setPokemon(response.data))
       .catch(error => console.error('Error fetching Pokemon:', error));
 
     axios.get('http://localhost:3001/api/favorites')
-      .then(response => {
-        setFavorites(response.data);
-      })
+      .then(response => setFavorites(response.data))
       .catch(error => console.error('Error fetching favorites:', error));
   }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
     axios.get(`http://localhost:3001/api/pokemon/${searchTerm}`)
-      .then(response => {
-        setPokemon([response.data]);
-      })
+      .then(response => setPokemon([response.data]))
       .catch(error => console.error('Error fetching Pokemon:', error));
   };
 
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+  const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
   const toggleFavorite = (id) => {
     const isFavorite = favorites.some(f => f.pokemonId.id === id);
@@ -95,10 +89,10 @@ const MainMenu = () => {
             const typeColor1 = typeColors[type1] || '#f0f0f0';
             const typeColor2 = type2 ? (typeColors[type2] || '#f0f0f0') : null;
             return (
-              <div key={p._id} className={`pokemon-card ${type1}`}>
+              <div key={p._id} className={`pokemon-card ${type1}`} onClick={() => navigate(`/pokemon/${p.id}`)}>
                 <div className="card-header">
                   <span className="pokemon-id">#{p.id}</span>
-                  <button className="favorite-button" onClick={() => toggleFavorite(p.id)}>
+                  <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleFavorite(p.id); }}>
                     {favorites.some(f => f.pokemonId.id === p.id) ? '❤️' : '♡'}
                   </button>
                 </div>
