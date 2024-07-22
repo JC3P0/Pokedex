@@ -1,6 +1,194 @@
-/* src/components/PokemonDetail.css */
-.pokemon-image {
-    width: 175px; /* Adjust the width as needed */
-    height: auto;
-  }
-  
+.pokemon-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.detail-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  max-width: 375px; /* Added max-width for mobile */
+  width: 100%; /* Full width */
+}
+
+.detail-card .pokemon-id {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 0.8em;
+  color: #333;
+}
+
+.detail-card .favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.detail-card .pokemon-name {
+  background-color: #eee;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-top: -10px;
+  font-size: 1em;
+  color: #333;
+  text-transform: capitalize;
+}
+
+.detail-card .back-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.detail-card .toggle-image-button {
+  position: absolute;
+  top: 55px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  color: white;
+  padding: 5px 10px; /* Reduced padding for a smaller button */
+  font-size: 0.8em; /* Smaller text */
+  font-weight: bold; /* Bold text */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.detail-card .toggle-image-button:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.detail-card .pokemon-image {
+  width: 175px;
+  height: auto;
+  margin-top: 14px;
+  margin-bottom: 0px; /* Reduced margin to bring closer to stats */
+}
+
+.base-experience {
+  margin-top: -10px; /* Add some spacing above the base experience text */
+  margin-bottom: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+}
+
+.pokemon-types {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between types */
+  margin-bottom: 10px;
+}
+
+.pokemon-type {
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.pokemon-measurements-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.measurement {
+  text-align: center;
+  flex: 1;
+}
+
+.measurement-value {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.measurement-label {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.base-stats-title {
+  text-align: center;
+  flex: 2;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.pokemon-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5px; /* Reduced margin to bring closer to image */
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.stat-name {
+  font-weight: bold;
+  text-align: right; /* Align stat name to the right */
+  width: 50px; /* Reduced width for better alignment */
+}
+
+.stat-bar {
+  flex: 4;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 0 5px; /* Reduced margin to move closer to the names */
+  overflow: hidden;
+  position: relative;
+  height: 20px;
+  width: 100px; /* Set the width to a fixed value */
+}
+
+.stat-bar::after {
+  content: attr(data-value); /* Use the data-value attribute for content */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  line-height: 20px; /* Center the text vertically */
+  z-index: 1; /* Ensure it's above the fill */
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px 0 0 10px;
+  text-align: left; /* Align text to the left */
+  position: relative; /* Ensure the fill is relative positioned within the bar */
+}

@@ -1,39 +1,40 @@
+/* src/components/MainMenu.css */
 .main-menu {
     text-align: center;
     padding: 20px;
 }
 
-.pokedex-image {
+.main-menu .pokedex-image {
     width: 200px; /* Adjust the size as needed */
     margin-bottom: 20px;
 }
 
-.search-form {
+.main-menu .search-form {
     margin-bottom: 20px;
 }
 
-.search-form input {
+.main-menu .search-form input {
     padding: 10px;
     width: 200px;
 }
 
-.search-form button {
+.main-menu .search-form button {
     padding: 10px;
 }
 
-.content {
+.main-menu .content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.pokemon-list {
+.main-menu .pokemon-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.pokemon-card {
+.main-menu .pokemon-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -49,20 +50,20 @@
     z-index: 1;
 }
 
-.pokemon-card img {
+.main-menu .pokemon-card img {
     width: 100px;
     height: 100px;
     margin-bottom: 1px; /* Adjusted margin to bring image closer to the name */
 }
 
-.pokemon-card p {
+.main-menu .pokemon-card p {
     margin: 0;
 }
 
-.pokemon-id {
+.main-menu .pokemon-id {
     position: absolute;
     top: 5px;
-    left: 10px;
+    left: 7px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     padding: 2px 5px;
@@ -70,17 +71,17 @@
     color: #333;
 }
 
-.favorite-button {
+.main-menu .favorite-button {
     position: absolute;
     top: -8px; /* Adjust this value to move higher */
-    right: 8px; /* Adjust this value to move more right */
+    right: 4px; /* Adjust this value to move more right */
     background: none;
     border: none;
     cursor: pointer;
     font-size: 1.2em;
 }
 
-.pokemon-name {
+.main-menu .pokemon-name {
     background-color: #eee;
     border-radius: 20px; /* Adjusted for more rounded edges */
     padding: 5px 10px;
@@ -89,7 +90,7 @@
     color: #333;
 }
 
-.pokemon-types {
+.main-menu .pokemon-types {
     display: none;
     flex-direction: column;
     gap: 5px;
@@ -98,7 +99,7 @@
     transform: translateY(-50%);
 }
 
-.pokemon-type {
+.main-menu .pokemon-type {
     padding: 2px 8px;
     border-radius: 20px;
     font-size: 1em;
@@ -107,20 +108,20 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.pokemon-card:hover {
+.main-menu .pokemon-card:hover {
     background-color: rgba(0, 0, 0, 0.1);
     opacity: 0.8;
 }
 
-.pokemon-card:hover .pokemon-types {
+.main-menu .pokemon-card:hover .pokemon-types {
     display: flex;
 }
 
-button {
+.main-menu button {
     margin-top: 10px;
 }
 
-.toggle-button {
+.main-menu .toggle-button {
     background-color: green;
     color: white;
     border: none;
@@ -129,25 +130,25 @@ button {
     border-radius: 5px;
 }
 
-.toggle-button:hover {
+.main-menu .toggle-button:hover {
     background-color: darkgreen;
 }
 
-.normal { background: linear-gradient(to bottom right, #A4A4A4, #a4a4a463); }
-.fire { background: linear-gradient(to bottom right, #FFA07A, #ff634773); }
-.fighting { background: linear-gradient(to bottom right, #C66F39, #c66f3975); }
-.water { background: linear-gradient(to bottom right, #539AD4, rgba(30, 143, 255, 0.514)); }
-.flying { background: linear-gradient(to bottom right, #4866AC, rgba(70, 131, 180, 0.5)); }
-.grass { background: linear-gradient(to bottom right, #52A938, #52a93871); }
-.poison { background: linear-gradient(to bottom right, #7C57A1, rgba(137, 43, 226, 0.452)); }
-.electric { background: linear-gradient(to bottom right, #FFD700, rgba(255, 236, 139, 0.486)); }
-.ground { background: linear-gradient(to bottom right, #DEB887, rgba(210, 180, 140, 0.521)); }
-.psychic { background: linear-gradient(to bottom right, #FF69B4, rgba(255, 20, 145, 0.514)); }
-.rock { background: linear-gradient(to bottom right, #B8860B, #b8870b6e); }
-.ice { background: linear-gradient(to bottom right, #ADD8E6, rgba(176, 224, 230, 0.527)); }
-.bug { background: linear-gradient(to bottom right, #9A70AE, rgba(106, 142, 35, 0.493)); }
-.dragon { background: linear-gradient(to bottom right, #6A5ACD, rgba(71, 61, 139, 0.479)); }
-.ghost { background: linear-gradient(to bottom right, #4B0082, rgba(137, 43, 226, 0.493)); }
-.dark { background: linear-gradient(to bottom right, #0B0E0F, rgba(47, 79, 79, 0.452)); }
-.steel { background: linear-gradient(to bottom right, #C0C0C0, rgba(169, 169, 169, 0.466)); }
-.fairy { background: linear-gradient(to bottom right, #FFC0CB, rgba(255, 182, 193, 0.411)); }
+.main-menu .normal { background: linear-gradient(to bottom right, #A4A4A4, #a4a4a463); }
+.main-menu .fire { background: linear-gradient(to bottom right, #FFA07A, #ff634773); }
+.main-menu .fighting { background: linear-gradient(to bottom right, #C66F39, #c66f3975); }
+.main-menu .water { background: linear-gradient(to bottom right, #539AD4, rgba(30, 143, 255, 0.514)); }
+.main-menu .flying { background: linear-gradient(to bottom right, #4866AC, rgba(70, 131, 180, 0.5)); }
+.main-menu .grass { background: linear-gradient(to bottom right, #52A938, #52a93871); }
+.main-menu .poison { background: linear-gradient(to bottom right, #7C57A1, rgba(137, 43, 226, 0.452)); }
+.main-menu .electric { background: linear-gradient(to bottom right, #FFD700, rgba(255, 236, 139, 0.486)); }
+.main-menu .ground { background: linear-gradient(to bottom right, #DEB887, rgba(210, 180, 140, 0.521)); }
+.main-menu .psychic { background: linear-gradient(to bottom right, #FF69B4, rgba(255, 20, 145, 0.514)); }
+.main-menu .rock { background: linear-gradient(to bottom right, #B8860B, #b8870b6e); }
+.main-menu .ice { background: linear-gradient(to bottom right, #ADD8E6, rgba(176, 224, 230, 0.527)); }
+.main-menu .bug { background: linear-gradient(to bottom right, #9A70AE, rgba(106, 142, 35, 0.493)); }
+.main-menu .dragon { background: linear-gradient(to bottom right, #6A5ACD, rgba(71, 61, 139, 0.479)); }
+.main-menu .ghost { background: linear-gradient(to bottom right, #4B0082, rgba(137, 43, 226, 0.493)); }
+.main-menu .dark { background: linear-gradient(to bottom right, #0B0E0F, rgba(47, 79, 79, 0.452)); }
+.main-menu .steel { background: linear-gradient(to bottom right, #C0C0C0, rgba(169, 169, 169, 0.466)); }
+.main-menu .fairy { background: linear-gradient(to bottom right, #FFC0CB, rgba(255, 182, 193, 0.411)); }
