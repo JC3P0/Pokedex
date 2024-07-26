@@ -13,3 +13,15 @@ server/node_modules/
 client/build/
 server/dist/
 .env
+
+# Docker files
+Dockerfile
+# Shell scripts
+*.sh
+
+# Batch script and other files
+run.bat
+sources.txt
+runtime/
+installer/
+commands/

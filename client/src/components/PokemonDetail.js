@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// src/components/PokemonDetail.js
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PokemonDetail.css';
+import api from '../config'; // Import the configured Axios instance
+import { FavoritesContext } from '../context/FavoritesContext';
 
 const PokemonDetail = () => {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState(null);
-  const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isShiny, setIsShiny] = useState(false);
   const navigate = useNavigate();
+  const { favorites, toggleFavorite } = useContext(FavoritesContext);
 
   const typeColors = {
     normal: "#A4A4A4",
@@ -43,41 +45,23 @@ const PokemonDetail = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/pokemon/${id}`)
-      .then(response => {
+    const fetchPokemon = async () => {
+      try {
+        const response = await api.get(`http://localhost:3001/api/pokemon/${id}`);
         setPokemon(response.data);
         setLoading(false);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching Pokemon:', error);
         setError(error);
         setLoading(false);
-      });
+      }
+    };
 
-    axios.get('http://localhost:3001/api/favorites')
-      .then(response => {
-        setFavorites(response.data);
-      })
-      .catch(error => console.error('Error fetching favorites:', error));
+    fetchPokemon();
   }, [id]);
 
-  const toggleFavorite = () => {
-    const isFavorite = favorites.some(f => f.pokemonId.id === parseInt(id));
-    const url = `http://localhost:3001/api/favorites/${id}`;
-    const method = isFavorite ? 'DELETE' : 'POST';
-
-    axios({ method, url })
-      .then(() => {
-        const newFavorites = isFavorite
-          ? favorites.filter(f => f.pokemonId.id !== parseInt(id))
-          : [...favorites, { pokemonId: { id: parseInt(id), name: pokemon.name } }];
-        setFavorites(newFavorites);
-      })
-      .catch(error => console.error('Error toggling favorite:', error));
-  };
-
   const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return string ? string.charAt(0).toUpperCase() + string.slice(1) : '';
   };
 
   const toggleImage = () => {
@@ -101,6 +85,24 @@ const PokemonDetail = () => {
   const type1 = pokemon.types && pokemon.types[0]?.name;
   const type2 = pokemon.types && pokemon.types[1]?.name;
   const typeColor1 = typeColors[type1] || '#f0f0f0';
+  const typeColor2 = type2 ? typeColors[type2] : null;
+  const typeColor3 = '#f0f0f0';
+
+  const backgroundColor = typeColor1;
+  const backgroundImage = type2
+    ? `linear-gradient(30deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
+       linear-gradient(150deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
+       linear-gradient(30deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
+       linear-gradient(150deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
+       linear-gradient(60deg, ${typeColor2}77 25%, transparent 25.5%, transparent 75%, ${typeColor2}77 75%, ${typeColor2}77), 
+       linear-gradient(60deg, ${typeColor2}77 25%, transparent 25.5%, transparent 75%, ${typeColor2}77 75%, ${typeColor2}77)`
+    : `linear-gradient(30deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
+       linear-gradient(150deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
+       linear-gradient(30deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
+       linear-gradient(150deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
+       linear-gradient(60deg, ${typeColor3}77 25%, transparent 25.5%, transparent 75%, ${typeColor3}77 75%, ${typeColor3}77), 
+       linear-gradient(60deg, ${typeColor3}77 25%, transparent 25.5%, transparent 75%, ${typeColor3}77 75%, ${typeColor3}77)`;
+
   const maxStat = Math.max(...pokemon.stats.map(stat => stat.base_stat));
 
   const weightKg = pokemon.weight / 10;
@@ -111,9 +113,18 @@ const PokemonDetail = () => {
 
   return (
     <div className="pokemon-detail">
-      <div className="detail-card" style={{ backgroundColor: typeColor1 }}>
+      <div 
+        className="detail-card" 
+        style={{
+          backgroundColor: backgroundColor,
+          backgroundImage: backgroundImage,
+          opacity: 0.8,
+          backgroundSize: '20px 35px',
+          backgroundPosition: '0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px'
+        }}
+      >
         <span className="pokemon-id">#{pokemon.id}</span>
-        <button className="favorite-button" onClick={toggleFavorite}>
+        <button className="favorite-button" onClick={() => toggleFavorite(parseInt(id), pokemon)}>
           {favorites.some(f => f.pokemonId.id === parseInt(id)) ? '❤️' : '♡'}
         </button>
         <button className="back-button" onClick={() => navigate(-1)}>

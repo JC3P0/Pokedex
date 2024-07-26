@@ -14,7 +14,6 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f0f0f0;
   max-width: 375px; /* Added max-width for mobile */
   width: 100%; /* Full width */
 }
