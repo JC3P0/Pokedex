@@ -1,4 +1,3 @@
-// src/utils/renderPokemonCategory.js
 import React from 'react';
 import typeColors from './typeColors';
 import capitalizeFirstLetter from './capitalizeFirstLetter';
@@ -14,7 +13,7 @@ const renderPokemonCategory = ({
     if (!activePokemonCategory && !showFavorites) return null;
 
     const filteredPokemon = showFavorites
-        ? pokemon.filter(p => favorites.some(f => f.pokemonId.id === p.id))
+        ? pokemon.filter(p => favorites.some(f => f.id === p.id))
         : activePokemonCategory
         ? pokemon.filter(p => {
             switch (activePokemonCategory) {
@@ -54,8 +53,8 @@ const renderPokemonCategory = ({
             <div key={p.id} className={`pokemon-card ${type1}`} onClick={() => handleNavigate(p.id)}>
                 <div className="card-header">
                     <span className="pokemon-id">#{p.id}</span>
-                    <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleFavorite(p.id, p); }}>
-                        {favorites.some(f => f.pokemonId.id === p.id) ? '❤️' : '♡'}
+                    <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleFavorite(p._id, p); }}>
+                        {favorites.some(f => f._id === p._id) ? '❤️' : '♡'}
                     </button>
                 </div>
                 {p.sprites && p.sprites.front_default && (

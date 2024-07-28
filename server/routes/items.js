@@ -5,12 +5,12 @@ const Item = require('../models/Item');
 // Get all items or items by category
 router.get('/', async (req, res) => {
   try {
-    const { category, limit = 100 } = req.query;
+    const { category } = req.query;
     let query = {};
     if (category) {
       query = { 'category.name': category };
     }
-    const items = await Item.find(query).limit(parseInt(limit));
+    const items = await Item.find(query);
     res.json(items);
   } catch (err) {
     console.error('Error fetching items:', err);
