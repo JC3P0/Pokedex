@@ -40,6 +40,7 @@ import {
   togglePokemonFavoriteInIndexedDB,
   toggleItemFavoriteInIndexedDB,
 } from '../utils/indexedDB';
+import pokedexImage from '../assets/pokedex-image.png';
 
 const MainMenu = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,13 +60,25 @@ const MainMenu = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const cachedPokemon = await getPokemonFromIndexedDB();
-      const cachedItems = await getItemsFromIndexedDB();
+      let cachedPokemon = await getPokemonFromIndexedDB();
+      let cachedItems = await getItemsFromIndexedDB();
+
+      if (cachedPokemon.length === 0) {
+        cachedPokemon = await fetchPokemon();
+        await savePokemonToIndexedDB(cachedPokemon);
+      }
+
+      if (cachedItems.length === 0) {
+        cachedItems = await fetchItems();
+        await saveItemsToIndexedDB(cachedItems);
+      }
+
+      setPokemon(cachedPokemon);
+      setItems(cachedItems);
+
       const cachedPokemonFavorites = await getPokemonFavoritesFromIndexedDB();
       const cachedItemFavorites = await getItemFavoritesFromIndexedDB();
 
-      setPokemon(cachedPokemon.length ? cachedPokemon : await fetchPokemon());
-      setItems(cachedItems.length ? cachedItems : await fetchItems());
       setPokemonFavorites(cachedPokemonFavorites);
       setItemFavorites(cachedItemFavorites);
     };
@@ -126,7 +139,6 @@ const MainMenu = () => {
 
   const handleShowFavorites = async () => {
     setShowFavorites(prev => !prev);
-    console.log('showFavorites changed:', showFavorites);
     if (!showFavorites) {
       if (showPokemon) {
         setPokemonFavorites(await getPokemonFavoritesFromIndexedDB());
@@ -137,12 +149,11 @@ const MainMenu = () => {
   };
 
   useEffect(() => {
-    console.log('showFavorites changed:', showFavorites);
   }, [showFavorites]);
 
   return (
     <div className="main-menu">
-      <img src="/path/to/pokedex-image.png" alt="Pokedex" className="pokedex-image" />
+      <img src={pokedexImage} alt="Pokedex" className="pokedex-image" />
       <form className="search-form">
         <input
           type="text"
