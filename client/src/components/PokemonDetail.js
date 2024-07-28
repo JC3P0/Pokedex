@@ -1,9 +1,8 @@
-// src/components/PokemonDetail.js
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PokemonDetail.css';
-import api from '../config'; // Import the configured Axios instance
-import { FavoritesContext } from '../context/FavoritesContext';
+import { getPokemonByIdFromIndexedDB, getPokemonFavoritesFromIndexedDB, togglePokemonFavoriteInIndexedDB } from '../utils/indexedDB';
+import typeColors from '../utils/typeColors';
 
 const PokemonDetail = () => {
   const { id } = useParams();
@@ -11,29 +10,8 @@ const PokemonDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isShiny, setIsShiny] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
-  const { favorites, toggleFavorite } = useContext(FavoritesContext);
-
-  const typeColors = {
-    normal: "#A4A4A4",
-    fire: "#FFA07A",
-    fighting: "#C66F39",
-    water: "#539AD4",
-    flying: "#4866AC",
-    grass: "#52A938",
-    poison: "#7C57A1",
-    electric: "#FFD700",
-    ground: "#DEB887",
-    psychic: "#FF69B4",
-    rock: "#B8860B",
-    ice: "#ADD8E6",
-    bug: "#9A70AE",
-    dragon: "#6A5ACD",
-    ghost: "#4B0082",
-    dark: "#0B0E0F",
-    steel: "#C0C0C0",
-    fairy: "#FFC0CB"
-  };
 
   const statNames = {
     hp: "HP",
@@ -47,8 +25,11 @@ const PokemonDetail = () => {
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
-        const response = await api.get(`http://localhost:3001/api/pokemon/${id}`);
-        setPokemon(response.data);
+        const data = await getPokemonByIdFromIndexedDB(id);
+        if (!data) {
+          throw new Error("Pokemon not found in IndexedDB");
+        }
+        setPokemon(data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching Pokemon:', error);
@@ -57,7 +38,17 @@ const PokemonDetail = () => {
       }
     };
 
+    const fetchFavorites = async () => {
+      try {
+        const favoritesData = await getPokemonFavoritesFromIndexedDB();
+        setFavorites(favoritesData);
+      } catch (error) {
+        console.error('Error fetching favorites:', error);
+      }
+    };
+
     fetchPokemon();
+    fetchFavorites();
   }, [id]);
 
   const capitalizeFirstLetter = (string) => {
@@ -77,6 +68,12 @@ const PokemonDetail = () => {
     const feet = Math.floor(totalInches / 12);
     const inches = Math.round(totalInches % 12);
     return inches === 12 ? `${feet + 1}'0"` : `${feet}'${inches}"`;
+  };
+
+  const toggleFavorite = async (_id, entity) => {
+    await togglePokemonFavoriteInIndexedDB(_id, entity);
+    const updatedFavorites = await getPokemonFavoritesFromIndexedDB();
+    setFavorites(updatedFavorites);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -124,10 +121,10 @@ const PokemonDetail = () => {
         }}
       >
         <span className="pokemon-id">#{pokemon.id}</span>
-        <button className="favorite-button" onClick={() => toggleFavorite(parseInt(id), pokemon)}>
-          {favorites.some(f => f.pokemonId.id === parseInt(id)) ? '❤️' : '♡'}
+        <button className="favorite-button" onClick={() => toggleFavorite(pokemon._id, pokemon)}>
+          {favorites.some(f => f._id === pokemon._id) ? '❤️' : '♡'}
         </button>
-        <button className="back-button" onClick={() => navigate(-1)}>
+        <button className="back-button" onClick={() => navigate('/', { state: { tab: 'pokemon' } })}>
           ←
         </button>
         <button className="toggle-image-button" onClick={toggleImage}>

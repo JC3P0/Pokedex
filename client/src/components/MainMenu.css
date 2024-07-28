@@ -10,6 +10,7 @@
 
 .main-menu .search-form {
   margin-bottom: 20px;
+  position: relative; /* To position the suggestions */
 }
 
 .main-menu .search-form input {
@@ -19,6 +20,31 @@
 
 .main-menu .search-form button {
   padding: 10px;
+}
+
+.main-menu .search-suggestions {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  width: calc(100% - 40px); /* Adjust to fit the input width */
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-menu .search-suggestion {
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.main-menu .search-suggestion:hover {
+  background-color: #f0f0f0;
 }
 
 .main-menu .content {

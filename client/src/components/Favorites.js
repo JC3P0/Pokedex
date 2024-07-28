@@ -1,20 +1,20 @@
-
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// src/components/Favorites.js
+import React, { useContext } from 'react';
+import { FavoritesContext } from '../context/FavoritesContext';
 
 const Favorites = () => {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3001/api/favorites')
-      .then(response => setFavorites(response.data))
-      .catch(error => console.error(error));
-  }, []);
+  const { favorites } = useContext(FavoritesContext);
 
   return (
     <div>
-      {favorites.map(f => (
-        <div key={f.pokemonId._id}>{f.pokemonId.name}</div>
+      {favorites.map((f, index) => (
+        <div key={index}>
+          {f.isPokemon ? (
+            <div>{f.item.name}</div>
+          ) : (
+            <div>{f.item.name}</div>
+          )}
+        </div>
       ))}
     </div>
   );
