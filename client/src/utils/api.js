@@ -29,7 +29,7 @@ export const fetchItems = async () => {
         const response = await api.get('/getItem');
         return response.data;
     } catch (error) {
-        console.error('Error fetching items:', error);
+        console.error('Error fetching Items:', error);
         throw error;
     }
 };
@@ -39,7 +39,7 @@ export const fetchItemById = async (id) => {
         const response = await api.get(`/getItem?query=${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error fetching item by ID:', error);
+        console.error('Error fetching Item by ID:', error);
         throw error;
     }
 };
@@ -49,7 +49,7 @@ export const searchPokemon = async (searchTerm) => {
         const response = await api.get(`/getPokemon?query=${searchTerm}`);
         return response.data;
     } catch (error) {
-        console.error('Error fetching Pokémon:', error);
+        console.error('Error searching Pokémon:', error);
         throw error;
     }
 };
