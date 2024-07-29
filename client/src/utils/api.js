@@ -1,13 +1,12 @@
-// src/utils/api.js
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001/api'
+    baseURL: process.env.NODE_ENV === 'production' ? '/.netlify/functions' : 'http://localhost:3001/api'
 });
 
 export const fetchPokemon = async () => {
     try {
-        const response = await api.get('/pokemon');
+        const response = await api.get('/getPokemon');
         return response.data;
     } catch (error) {
         console.error('Error fetching Pokémon:', error);
@@ -17,7 +16,7 @@ export const fetchPokemon = async () => {
 
 export const fetchPokemonById = async (id) => {
     try {
-        const response = await api.get(`/pokemon/${id}`);
+        const response = await api.get(`/getPokemon?query=${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching Pokémon by ID:', error);
@@ -27,7 +26,7 @@ export const fetchPokemonById = async (id) => {
 
 export const fetchItems = async () => {
     try {
-        const response = await api.get('/items');
+        const response = await api.get('/getItem');
         return response.data;
     } catch (error) {
         console.error('Error fetching items:', error);
@@ -37,7 +36,7 @@ export const fetchItems = async () => {
 
 export const fetchItemById = async (id) => {
     try {
-        const response = await api.get(`/items/${id}`);
+        const response = await api.get(`/getItem?query=${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching item by ID:', error);
@@ -47,7 +46,7 @@ export const fetchItemById = async (id) => {
 
 export const searchPokemon = async (searchTerm) => {
     try {
-        const response = await api.get(`/pokemon/${searchTerm}`);
+        const response = await api.get(`/getPokemon?query=${searchTerm}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching Pokémon:', error);
