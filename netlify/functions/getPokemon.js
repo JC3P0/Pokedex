@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Pokemon = require('../../models/Pokemon'); // Adjust path as needed
+const Pokemon = require('../../server/models/Pokemon'); // Adjust path as needed
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,

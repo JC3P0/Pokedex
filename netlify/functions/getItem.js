@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Item = require('../../models/Item'); // Adjust path as needed
+const Item = require('../../server/models/Item'); // Adjust path as needed
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
