@@ -26,3 +26,6 @@ sources.txt
 runtime/
 installer/
 commands/
+
+# Local Netlify folder
+.netlify
