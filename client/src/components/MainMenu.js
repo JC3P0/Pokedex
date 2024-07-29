@@ -29,7 +29,10 @@ import {
 } from '../utils/ItemToggleHandlers';
 import renderItemCategory from '../utils/renderItemCategory';
 import renderPokemonCategory from '../utils/renderPokemonCategory';
-import { fetchPokemon, fetchItems } from '../utils/api';
+import {
+  fetchPokemon,
+  fetchItems,
+} from '../utils/api';
 import {
   savePokemonToIndexedDB,
   getPokemonFromIndexedDB,
@@ -59,22 +62,39 @@ const MainMenu = () => {
   const location = useLocation();
 
   useEffect(() => {
+    const fetchDataInChunks = async (fetchFunction, saveFunction, setFunction) => {
+      let allData = [];
+      let page = 1;
+      let limit = 100;
+      let chunk;
+
+      do {
+        chunk = await fetchFunction(page, limit);
+        if (chunk.length > 0) {
+          allData = allData.concat(chunk);
+          await saveFunction(chunk);
+        }
+        page++;
+      } while (chunk.length === limit);
+
+      setFunction(allData);
+    };
+
     const fetchData = async () => {
       let cachedPokemon = await getPokemonFromIndexedDB();
       let cachedItems = await getItemsFromIndexedDB();
 
       if (cachedPokemon.length === 0) {
-        cachedPokemon = await fetchPokemon();
-        await savePokemonToIndexedDB(cachedPokemon);
+        await fetchDataInChunks(fetchPokemon, savePokemonToIndexedDB, setPokemon);
+      } else {
+        setPokemon(cachedPokemon);
       }
 
       if (cachedItems.length === 0) {
-        cachedItems = await fetchItems();
-        await saveItemsToIndexedDB(cachedItems);
+        await fetchDataInChunks(fetchItems, saveItemsToIndexedDB, setItems);
+      } else {
+        setItems(cachedItems);
       }
-
-      setPokemon(cachedPokemon);
-      setItems(cachedItems);
 
       const cachedPokemonFavorites = await getPokemonFavoritesFromIndexedDB();
       const cachedItemFavorites = await getItemFavoritesFromIndexedDB();
@@ -148,8 +168,7 @@ const MainMenu = () => {
     }
   };
 
-  useEffect(() => {
-  }, [showFavorites]);
+  useEffect(() => {}, [showFavorites]);
 
   return (
     <div className="main-menu">
@@ -225,7 +244,7 @@ const MainMenu = () => {
           </>
         )}
         <div className="pokemon-list">
-          {renderPokemonCategory({ 
+          {renderPokemonCategory({
             activePokemonCategory,
             showFavorites,
             favorites: pokemonFavorites,
