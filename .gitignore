@@ -16,6 +16,7 @@ server/dist/
 
 # Docker files
 Dockerfile
+docker-compose.yml
 # Shell scripts
 *.sh
 
