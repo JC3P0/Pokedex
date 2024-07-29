@@ -8,6 +8,9 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 exports.handler = async (event, context) => {
   const query = event.queryStringParameters.query;
+  const page = parseInt(event.queryStringParameters.page) || 1;
+  const limit = parseInt(event.queryStringParameters.limit) || 100; // Set a limit of 100 Pokémon per page
+
   try {
     let pokemon;
     if (query) {
@@ -22,13 +25,24 @@ exports.handler = async (event, context) => {
           body: JSON.stringify({ message: 'Pokemon not found' }),
         };
       }
+      return {
+        statusCode: 200,
+        body: JSON.stringify([pokemon]),
+      };
     } else {
-      pokemon = await Pokemon.find();
+      const skip = (page - 1) * limit;
+      pokemon = await Pokemon.find().skip(skip).limit(limit);
+      const total = await Pokemon.countDocuments();
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          pokemon,
+          total,
+          page,
+          pages: Math.ceil(total / limit)
+        }),
+      };
     }
-    return {
-      statusCode: 200,
-      body: JSON.stringify(pokemon),
-    };
   } catch (err) {
     console.error('Error fetching Pokemon:', err);
     return {

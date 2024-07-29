@@ -8,6 +8,9 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 exports.handler = async (event, context) => {
   const query = event.queryStringParameters.query;
+  const page = parseInt(event.queryStringParameters.page) || 1;
+  const limit = parseInt(event.queryStringParameters.limit) || 100; // Set a limit of 100 items per page
+
   try {
     let item;
     if (query) {
@@ -22,18 +25,26 @@ exports.handler = async (event, context) => {
           body: JSON.stringify({ message: 'Item not found' }),
         };
       }
-    } else {
-      const category = event.queryStringParameters.category;
-      const items = await Item.find(category ? { 'category.name': category } : {});
       return {
         statusCode: 200,
-        body: JSON.stringify(items),
+        body: JSON.stringify([item]),
+      };
+    } else {
+      const category = event.queryStringParameters.category;
+      const query = category ? { 'category.name': category } : {};
+      const skip = (page - 1) * limit;
+      const items = await Item.find(query).skip(skip).limit(limit);
+      const total = await Item.countDocuments(query);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          items,
+          total,
+          page,
+          pages: Math.ceil(total / limit)
+        }),
       };
     }
-    return {
-      statusCode: 200,
-      body: JSON.stringify(item),
-    };
   } catch (err) {
     console.error('Error fetching item:', err);
     return {
