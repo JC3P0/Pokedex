@@ -1,49 +1,54 @@
 import React from 'react';
-import capitalizeFirstLetter from './capitalizeFirstLetter';
+import capitalizeFirstLetter from './capitalizeFirstLetter'; // Import utility to capitalize the first letter
 
+// Function to render the item category based on active category or favorites
 const renderItemCategory = ({
-    showCategory,
-    showFavorites,
-    items,
-    activeItemCategory,
-    toggleItemFavorite,
-    itemsFavorites,
-    handleNavigate,
+    showCategory, // Flag to show items by category
+    showFavorites, // Flag to show favorite items
+    items, // List of all items
+    activeItemCategory, // Currently active item category
+    toggleItemFavorite, // Function to toggle favorite status
+    itemsFavorites, // List of favorite items
+    handleNavigate, // Function to navigate to an item's detail page
 }) => {
+    // If no category is active and favorites are not to be shown, return null
     if (!showCategory && !showFavorites) return null;
 
+    // Filter items based on the active category or favorites
     const filteredItems = showFavorites
-        ? items.filter(i => itemsFavorites.some(f => f.id === i.id))
+        ? items.filter(i => itemsFavorites.some(f => f.id === i.id)) // Show only favorite items
         : items.filter(i => {
+            // Filter items based on the active category
             switch (activeItemCategory) {
                 case 'pokeballs':
-                    return i.category.name === 'standard-balls' || i.category.name === 'special-balls' || i.category.name === 'apricorn-balls';
+                    return ['standard-balls', 'special-balls', 'apricorn-balls'].includes(i.category.name);
                 case 'medical':
-                    return i.category.name === 'healing' || i.category.name === 'revival' || i.category.name === 'status-cures' || i.category.name === 'vitamins' || i.category.name === 'pp-recovery' || i.category.name === 'flutes' || i.category.name === 'species-candies';
+                    return ['healing', 'revival', 'status-cures', 'vitamins', 'pp-recovery', 'flutes', 'species-candies'].includes(i.category.name);
                 case 'battle':
-                    return i.category.name === 'stat-boosts' || i.category.name === 'spelunking' || i.category.name === 'vitamins';
+                    return ['stat-boosts', 'spelunking', 'vitamins'].includes(i.category.name);
                 case 'loot':
                     return i.category.name === 'loot';
                 case 'berries':
-                    return i.category.name === 'effort-drop' || i.category.name === 'other' || i.category.name === 'in-a-pinch' || i.category.name === 'picky-healing' || i.category.name === 'type-protection' || i.category.name === 'mulch' || i.category.name === 'catching-bonus';
+                    return ['effort-drop', 'other', 'in-a-pinch', 'picky-healing', 'type-protection', 'mulch', 'catching-bonus'].includes(i.category.name);
                 case 'evolution':
-                    return i.category.name === 'evolution' || i.category.name === 'tera-shard';
+                    return ['evolution', 'tera-shard'].includes(i.category.name);
                 case 'tms':
                     return i.category.name === 'all-machines';
                 case 'held':
-                    return i.category.name === 'held-items' || i.category.name === 'choice' || i.category.name === 'effort-training' || i.category.name === 'bad-held-items' || i.category.name === 'training' || i.category.name === 'species-specific' || i.category.name === 'type-enhancement' || i.category.name === 'all-mail' || i.category.name === 'scarves' || i.category.name === 'jewels' || i.category.name === 'mega-stones' || i.category.name === 'memories' || i.category.name === 'z-crystals';
+                    return ['held-items', 'choice', 'effort-training', 'bad-held-items', 'training', 'species-specific', 'type-enhancement', 'all-mail', 'scarves', 'jewels', 'mega-stones', 'memories', 'z-crystals'].includes(i.category.name);
                 case 'valuable':
-                    return i.category.name === 'collectibles' || i.category.name === 'loot' || i.category.name === 'dex-completion';
+                    return ['collectibles', 'loot', 'dex-completion'].includes(i.category.name);
                 case 'ingredients':
-                    return i.category.name === 'curry-ingredients' || i.category.name === 'sandwich-ingredients' || i.category.name === 'baking-only' || i.category.name === 'mulch' || i.category.name === 'apricorn-box' || i.category.name === 'tm-materials' || i.category.name === 'picnic';
+                    return ['curry-ingredients', 'sandwich-ingredients', 'baking-only', 'mulch', 'apricorn-box', 'tm-materials', 'picnic'].includes(i.category.name);
                 case 'key':
-                    return i.category.name === 'plates' || i.category.name === 'event-items' || i.category.name === 'gameplay' || i.category.name === 'plot-advancement' || i.category.name === 'unused' || i.category.name === 'data-cards' || i.category.name === 'miracle-shooter';
+                    return ['plates', 'event-items', 'gameplay', 'plot-advancement', 'unused', 'data-cards', 'miracle-shooter'].includes(i.category.name);
                 case 'all':
                 default:
                     return true;
             }
         });
 
+    // Map through the filtered items and render each one
     return filteredItems.map(i => (
         <div key={i.id} className="item-card" onClick={() => handleNavigate(i.id)}>
             <div className="card-header">
@@ -60,4 +65,4 @@ const renderItemCategory = ({
     ));
 };
 
-export default renderItemCategory;
+export default renderItemCategory; // Export the function for use in other parts of the application
