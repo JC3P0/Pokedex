@@ -13,10 +13,7 @@
 - [Acknowledgments](#Acknowledgments)
 
 ## Demo
-<video loop autoplay muted playsinline controls>
-  <source src="screenshots/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Demo Video](screenshots/demogif.gif)
 
 ## Overview
 The Pokémon Pokedex Web App is a full-stack application built using the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to view detailed information about various Pokémon and items, search for specific Pokémon or items, and manage a list of favorites. The project demonstrates the ability to work with various technologies and provides a valuable educational tool for learning web development concepts.
