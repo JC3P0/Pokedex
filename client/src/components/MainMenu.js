@@ -46,22 +46,23 @@ import {
 import pokedexImage from '../assets/pokedex-image.png';
 
 const MainMenu = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [pokemon, setPokemon] = useState([]);
-  const [items, setItems] = useState([]);
-  const [filteredPokemon, setFilteredPokemon] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [showPokemon, setShowPokemon] = useState(true);
-  const [showFavorites, setShowFavorites] = useState(false);
-  const [pokemonFavorites, setPokemonFavorites] = useState([]);
-  const [itemFavorites, setItemFavorites] = useState([]);
-  const [activePokemonCategory, setActivePokemonCategory] = useState(null);
-  const [activeItemCategory, setActiveItemCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(''); // State for the search input value
+  const [pokemon, setPokemon] = useState([]); // State to store Pokémon data
+  const [items, setItems] = useState([]); // State to store items data
+  const [filteredPokemon, setFilteredPokemon] = useState([]); // State for filtered Pokémon based on search
+  const [filteredItems, setFilteredItems] = useState([]); // State for filtered items based on search
+  const [showPokemon, setShowPokemon] = useState(true); // State to toggle between showing Pokémon or items
+  const [showFavorites, setShowFavorites] = useState(false); // State to toggle between showing all or favorite items
+  const [pokemonFavorites, setPokemonFavorites] = useState([]); // State to store favorite Pokémon
+  const [itemFavorites, setItemFavorites] = useState([]); // State to store favorite items
+  const [activePokemonCategory, setActivePokemonCategory] = useState(null); // State to track active Pokémon category
+  const [activeItemCategory, setActiveItemCategory] = useState(null); // State to track active item category
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate = useNavigate(); // Hook to navigate programmatically
+  const location = useLocation(); // Hook to access the current location
 
   useEffect(() => {
+    // Function to fetch data in chunks and save to IndexedDB
     const fetchDataInChunks = async (fetchFunction, saveFunction, setFunction) => {
       let allData = [];
       let page = 1;
@@ -80,6 +81,7 @@ const MainMenu = () => {
       setFunction(allData);
     };
 
+    // Fetch and load data from IndexedDB or API
     const fetchData = async () => {
       let cachedPokemon = await getPokemonFromIndexedDB();
       let cachedItems = await getItemsFromIndexedDB();
@@ -105,10 +107,11 @@ const MainMenu = () => {
 
     fetchData();
 
-    // Handle tab state from navigation
+    // Set tab state based on navigation
     setShowPokemon(location.state?.tab !== 'items');
   }, [location.state?.tab]);
 
+  // Handle search input changes
   const handleSearch = (e) => {
     const { value } = e.target;
     const validatedValue = value.replace(/[^a-zA-Z]/g, '').substring(0, 20);
@@ -128,15 +131,18 @@ const MainMenu = () => {
     }
   };
 
+  // Handle navigation to detail views
   const handleNavigate = (id, isPokemon) => {
     navigate(isPokemon ? `/pokemon/${id}` : `/items/${id}`);
   };
 
+  // Handle suggestion click from search results
   const handleSuggestionClick = (suggestion) => {
     setSearchTerm(suggestion.name);
     handleNavigate(suggestion.id, showPokemon);
   };
 
+  // Handle tab switching between Pokémon and items
   const handleTabSwitch = (isPokemonTab) => {
     setShowPokemon(isPokemonTab);
     setShowFavorites(false);
@@ -147,16 +153,19 @@ const MainMenu = () => {
     setFilteredItems([]);
   };
 
+  // Toggle favorite status for Pokémon
   const togglePokemonFavorite = async (_id, entity) => {
     await togglePokemonFavoriteInIndexedDB(_id, entity);
     setPokemonFavorites(await getPokemonFavoritesFromIndexedDB());
   };
 
+  // Toggle favorite status for items
   const toggleItemFavorite = async (_id, entity) => {
     await toggleItemFavoriteInIndexedDB(_id, entity);
     setItemFavorites(await getItemFavoritesFromIndexedDB());
   };
 
+  // Toggle showing favorite Pokémon or items
   const handleShowFavorites = async () => {
     setShowFavorites(prev => !prev);
     if (!showFavorites) {
@@ -168,8 +177,7 @@ const MainMenu = () => {
     }
   };
 
-  useEffect(() => {}, [showFavorites]);
-
+  // Render the main menu with search and category filters
   return (
     <div className="main-menu">
       <img src={pokedexImage} alt="Pokedex" className="pokedex-image" />
@@ -269,4 +277,4 @@ const MainMenu = () => {
   );
 };
 
-export default MainMenu;
+export default MainMenu; // Export the component for use in other parts of the application

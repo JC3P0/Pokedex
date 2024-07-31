@@ -1,79 +1,85 @@
-/* src/components/ItemDetail.css */
+/* Main container for the item detail page */
 .item-detail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #f0f0f0; /* Solid gray background */
-  }
-  
-  .detail-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 375px; /* Added max-width for mobile */
-    width: 100%; /* Full width */
-    background-color: white; /* White background for the card */
-  }
-  
-  .detail-card .item-id {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    padding: 2px 5px;
-    font-size: 0.8em;
-    color: #333;
-  }
-  
-  .detail-card .favorite-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-  }
-  
-  .detail-card .back-button {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-  }
-  
-  .detail-card .item-name {
-    background-color: #eee;
-    border-radius: 20px;
-    padding: 5px 10px;
-    font-size: 1em;
-    color: #333;
-    text-transform: capitalize;
-    margin-bottom: 10px;
-  }
-  
-  .detail-card .item-image {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .detail-card .item-category,
-  .detail-card .item-cost,
-  .detail-card .item-effect,
-  .detail-card .item-fling-power {
-    font-size: 1em;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
+  display: flex; /* Flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Center text */
+  background-color: #f0f0f0; /* Solid gray background */
+}
+
+/* Card container for displaying item details */
+.detail-card {
+  position: relative; /* Allows absolute positioning of child elements */
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  padding: 20px; /* Padding inside the card */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 375px; /* Maximum width for mobile */
+  width: 100%; /* Full width */
+  background-color: white; /* White background for the card */
+}
+
+/* Styling for item ID text */
+.detail-card .item-id {
+  position: absolute; /* Positioned relative to the card */
+  top: 10px; /* 10px from the top */
+  left: 10px; /* 10px from the left */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 5px; /* Rounded corners */
+  padding: 2px 5px; /* Padding inside the element */
+  font-size: 0.8em; /* Smaller font size */
+  color: #333; /* Dark gray text color */
+}
+
+/* Styling for favorite button */
+.detail-card .favorite-button {
+  position: absolute; /* Positioned relative to the card */
+  top: 10px; /* 10px from the top */
+  right: 10px; /* 10px from the right */
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1.2em; /* Larger font size */
+}
+
+/* Styling for back button */
+.detail-card .back-button {
+  position: absolute; /* Positioned relative to the card */
+  bottom: 10px; /* 10px from the bottom */
+  left: 10px; /* 10px from the left */
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1.2em; /* Larger font size */
+}
+
+/* Styling for item name */
+.detail-card .item-name {
+  background-color: #eee; /* Light gray background */
+  border-radius: 20px; /* Rounded corners */
+  padding: 5px 10px; /* Padding inside the element */
+  font-size: 1em; /* Normal font size */
+  color: #333; /* Dark gray text color */
+  text-transform: capitalize; /* Capitalize first letter */
+  margin-bottom: 10px; /* Space below the name */
+}
+
+/* Styling for item image */
+.detail-card .item-image {
+  width: 100px; /* Fixed width */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Space below the image */
+}
+
+/* Styling for item details */
+.detail-card .item-category,
+.detail-card .item-cost,
+.detail-card .item-effect,
+.detail-card .item-fling-power {
+  font-size: 1em; /* Normal font size */
+  margin-bottom: 10px; /* Space below each detail */
+  color: #333; /* Dark gray text color */
+}
