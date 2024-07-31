@@ -8,7 +8,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [API Routes](#api-routes)
 - [Screenshots](#screenshots)
 - [License](#license)
 - [Acknowledgments](#Acknowledgments)
@@ -47,20 +46,19 @@ The Pokémon Pokedex Web App is a full-stack application built using the MERN st
 1. Clone the repository:
    ```bash
    git clone https://github.com/JC3P0/Pokedex.git
-   cd pokedex-web-app
 2. Install server dependencies:
-    cd server
-    npm install
+    cd server,
+    'npm install'
 3. Install client dependencies:
-    cd ../client
-    npm install
+    cd ../client,
+    'npm install'
 4. Set up environment variables:
-    DATABASE_URL=your_mongodb_connection_string
+    Create a .env in server folder to include: DATABASE_URL=your_mongodb_connection_string
 5. Start the development server:
     In the server directory:
-        node index.js
+        'node index.js'
     In the client directory:
-        npm start
+        'npm start'
 
 ## Useage
 1. Open your web browser and navigate to http://localhost:3000 to view the application.
@@ -101,17 +99,6 @@ The Pokémon Pokedex Web App is a full-stack application built using the MERN st
     │   
     ├── package.json
     └── README.md
-
-## API Routes
-Pokémon Routes
-
-    GET /api/pokemon: Fetch all Pokémon
-    GET /api/pokemon/:query: Fetch a single Pokémon by ID or name
-
-Item Routes
-
-    GET /api/items: Fetch all items or items by category
-    GET /api/items/:query: Fetch a single item by ID or name
 
 ## Screenshots
 ![Main Menu](screenshots/mainMenu.png)
