@@ -57,7 +57,7 @@ The Pokémon Pokedex Web App is a full-stack application built using the MERN st
     In the client directory:
         'npm start'
 
-## Useage
+## Usage
 1. Open your web browser and navigate to http://localhost:3000 to view the application.
 2. Use the search bar to find Pokémon or items by name.
 3. Click on a Pokémon or item to view detailed information.
