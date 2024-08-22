@@ -5,13 +5,13 @@ import { getPokemonByIdFromIndexedDB, getPokemonFavoritesFromIndexedDB, togglePo
 import typeColors from '../utils/typeColors';
 
 const PokemonDetail = () => {
-  const { id } = useParams(); // Get the Pokémon ID from the URL parameters
-  const [pokemon, setPokemon] = useState(null); // State to hold the Pokémon data
-  const [loading, setLoading] = useState(true); // State to manage loading status
-  const [error, setError] = useState(null); // State to manage errors
-  const [isShiny, setIsShiny] = useState(false); // State to toggle between shiny and normal sprite
-  const [favorites, setFavorites] = useState([]); // State to hold the list of favorite Pokémon
-  const navigate = useNavigate(); // Hook to navigate programmatically
+  const { id } = useParams();
+  const [pokemon, setPokemon] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isShiny, setIsShiny] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+  const navigate = useNavigate();
 
   // Mapping of stat names for display
   const statNames = {
@@ -179,4 +179,4 @@ const PokemonDetail = () => {
   );
 };
 
-export default PokemonDetail; // Export the component for use in other parts of the application
+export default PokemonDetail;

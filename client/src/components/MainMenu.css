@@ -1,10 +1,11 @@
-/* Main container for the main menu */
+/* client/src/components/MainMenu.css */
+
 .main-menu {
   text-align: center;
   padding: 20px;
   background: 
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
-    url('../assets/background-image.png'); /* Background image with gradient overlay */
+    url('../assets/background-image.png');
   background-size: cover; 
   background-position: center; 
   background-attachment: fixed;
@@ -13,7 +14,6 @@
   box-sizing: border-box;
 }
 
-/* Pokedex image styling */
 .main-menu .pokedex-image {
   width: 100%;
   max-width: 600px;
@@ -23,29 +23,25 @@
   border-radius: 15px;
 }
 
-/* Search form styling */
 .main-menu .search-form {
   margin-bottom: 20px;
-  position: relative; /* To position the suggestions */
+  position: relative;
 }
 
-/* Search input styling */
 .main-menu .search-form input {
   padding: 10px;
   width: 200px;
 }
 
-/* Search button styling */
 .main-menu .search-form button {
   padding: 10px;
 }
 
-/* Suggestions dropdown styling */
 .main-menu .search-suggestions {
   position: absolute;
   background-color: white;
   border: 1px solid #ddd;
-  width: calc(100% - 40px); /* Adjust to fit the input width */
+  width: calc(100% - 40px);
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
@@ -56,33 +52,28 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Individual suggestion styling */
 .main-menu .search-suggestion {
   padding: 10px;
   cursor: pointer;
   text-align: left;
 }
 
-/* Suggestion hover effect */
 .main-menu .search-suggestion:hover {
   background-color: #f0f0f0;
 }
 
-/* Content container styling */
 .main-menu .content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Tabs container styling */
 .main-menu .tabs {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-/* Individual tab styling */
 .main-menu .tab {
   padding: 10px 20px;
   cursor: pointer;
@@ -91,12 +82,10 @@
   margin: 0 10px;
 }
 
-/* Active tab styling */
 .main-menu .tab.active {
   background-color: #ccc;
 }
 
-/* Category buttons container styling */
 .main-menu .category-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -104,7 +93,6 @@
   gap: 10px;
 }
 
-/* Individual category button styling */
 .main-menu .category-button {
   background-color: blue;
   color: white;
@@ -112,15 +100,13 @@
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  white-space: nowrap; /* Prevents the button from stretching */
+  white-space: nowrap;
 }
 
-/* Active and hover effect for category buttons */
 .main-menu .category-button.active, .main-menu .category-button:hover {
   background-color: darkblue;
 }
 
-/* List container styling for Pokémon and items */
 .main-menu .pokemon-list,
 .main-menu .item-list {
   display: flex;
@@ -128,7 +114,6 @@
   justify-content: center;
 }
 
-/* Card styling for Pokémon and items */
 .main-menu .pokemon-card,
 .main-menu .item-card {
   position: relative;
@@ -137,30 +122,27 @@
   align-items: center;
   margin: 10px;
   padding: 10px;
-  border-radius: 15px; /* More rounded edges */
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
-  width: 125px; /* Fixed width */
-  height: 125px; /* Adjusted height for better spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 125px;
+  height: 125px;
   transition: background-color 0.3s, opacity 0.3s;
   z-index: 1;
 }
 
-/* Image styling for Pokémon and items */
 .main-menu .pokemon-card img,
 .main-menu .item-card img {
   width: 100px;
   height: 100px;
-  margin-bottom: 1px; /* Adjusted margin to bring image closer to the name */
+  margin-bottom: 1px;
 }
 
-/* Name styling for Pokémon and items */
 .main-menu .pokemon-card p,
 .main-menu .item-card p {
   margin: 0;
 }
 
-/* ID styling for Pokémon and items */
 .main-menu .pokemon-id,
 .main-menu .item-id {
   position: absolute;
@@ -173,29 +155,26 @@
   color: #333;
 }
 
-/* Favorite button styling */
 .main-menu .favorite-button {
   position: absolute;
-  top: -8px; /* Adjust this value to move higher */
-  right: 4px; /* Adjust this value to move more right */
+  top: -8px;
+  right: 4px;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.2em;
 }
 
-/* Name styling for Pokémon and items */
 .main-menu .pokemon-name,
 .main-menu .item-name {
   background-color: #eee;
-  border-radius: 20px; /* Adjusted for more rounded edges */
+  border-radius: 20px;
   padding: 5px 10px;
-  margin-top: 5px; /* Adjusted margin for better spacing */
+  margin-top: 5px;
   font-size: 1em;
   color: #333;
 }
 
-/* Container for Pokémon types */
 .main-menu .pokemon-types {
   display: none;
   flex-direction: column;
@@ -205,7 +184,6 @@
   transform: translateY(-50%);
 }
 
-/* Styling for individual types */
 .main-menu .pokemon-type {
   padding: 2px 8px;
   border-radius: 20px;
@@ -215,23 +193,19 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Hover effect for Pokémon cards */
 .main-menu .pokemon-card:hover {
   background-color: rgba(0, 0, 0, 0.1);
   opacity: 0.8;
 }
 
-/* Display types on hover */
 .main-menu .pokemon-card:hover .pokemon-types {
   display: flex;
 }
 
-/* General button styling */
 .main-menu button {
   margin-top: 10px;
 }
 
-/* Toggle button styling */
 .main-menu .toggle-button {
   background-color: green;
   color: white;
@@ -241,7 +215,6 @@
   border-radius: 5px;
 }
 
-/* Hover effect for toggle button */
 .main-menu .toggle-button:hover {
   background-color: darkgreen;
 }

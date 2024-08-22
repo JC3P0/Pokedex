@@ -1,4 +1,5 @@
-/* Main container for the Pokemon detail view */
+/* client/src/components/PokemonDetail.css */
+
 .pokemon-detail {
   display: flex;
   justify-content: center;
@@ -7,7 +8,6 @@
   text-align: center;
 }
 
-/* Card container for displaying Pokemon details */
 .detail-card {
   position: relative;
   display: flex;
@@ -16,11 +16,10 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 375px; /* Maximum width for mobile responsiveness */
-  width: 100%; /* Full width for flexibility */
+  max-width: 375px;
+  width: 100%;
 }
 
-/* Pokemon ID styling */
 .detail-card .pokemon-id {
   position: absolute;
   top: 10px;
@@ -32,7 +31,6 @@
   color: #333;
 }
 
-/* Favorite button styling */
 .detail-card .favorite-button {
   position: absolute;
   top: 10px;
@@ -43,7 +41,6 @@
   font-size: 1.2em;
 }
 
-/* Pokemon name styling */
 .detail-card .pokemon-name {
   background-color: #eee;
   border-radius: 20px;
@@ -54,7 +51,6 @@
   text-transform: capitalize;
 }
 
-/* Back button styling */
 .detail-card .back-button {
   position: absolute;
   bottom: 10px;
@@ -65,54 +61,48 @@
   font-size: 1.2em;
 }
 
-/* Toggle image button styling */
 .detail-card .toggle-image-button {
   position: absolute;
-  top: 55px; /* Adjust as needed */
+  top: 55px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #4caf50;
   border: none;
-  border-radius: 25px; /* Rounded corners */
+  border-radius: 25px;
   color: white;
-  padding: 5px 10px; /* Reduced padding for a smaller button */
-  font-size: 0.8em; /* Smaller text */
-  font-weight: bold; /* Bold text */
+  padding: 5px 10px;
+  font-size: 0.8em;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition effect */
+  transition: background-color 0.3s ease;
 }
 
-/* Toggle image button hover effect */
 .detail-card .toggle-image-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  background-color: #388e3c;
 }
 
-/* Pokemon image styling */
 .detail-card .pokemon-image {
   width: 175px;
   height: auto;
   margin-top: 14px;
-  margin-bottom: 0px; /* Reduced margin to bring closer to stats */
+  margin-bottom: 0px;
 }
 
-/* Base experience text styling */
 .base-experience {
-  margin-top: -10px; /* Add some spacing above the base experience text */
+  margin-top: -10px;
   margin-bottom: 10px;
   font-size: 1em;
   font-weight: bold;
   color: #333;
 }
 
-/* Container for Pokemon types */
 .pokemon-types {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Space between types */
+  gap: 10px;
   margin-bottom: 10px;
 }
 
-/* Individual type styling */
 .pokemon-type {
   padding: 5px 10px;
   border-radius: 10px;
@@ -121,7 +111,6 @@
   text-transform: capitalize;
 }
 
-/* Container for Pokemon measurements (height and weight) */
 .pokemon-measurements-container {
   display: flex;
   justify-content: space-between;
@@ -131,25 +120,21 @@
   margin-bottom: 10px;
 }
 
-/* Styling for individual measurements (height/weight) */
 .measurement {
   text-align: center;
   flex: 1;
 }
 
-/* Measurement value styling */
 .measurement-value {
   font-size: 1.2em;
   font-weight: bold;
 }
 
-/* Measurement label styling */
 .measurement-label {
   font-size: 0.8em;
   color: #666;
 }
 
-/* Base stats title styling */
 .base-stats-title {
   text-align: center;
   flex: 2;
@@ -157,15 +142,13 @@
   font-weight: bold;
 }
 
-/* Container for Pokemon stats */
 .pokemon-stats {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -5px; /* Reduced margin to bring closer to image */
+  margin-top: -5px;
 }
 
-/* Individual stat container styling */
 .stat {
   display: flex;
   align-items: center;
@@ -175,42 +158,38 @@
   margin-bottom: 10px;
 }
 
-/* Stat name styling */
 .stat-name {
   font-weight: bold;
-  text-align: right; /* Align stat name to the right */
-  width: 50px; /* Reduced width for better alignment */
+  text-align: right;
+  width: 50px;
 }
 
-/* Stat bar container styling */
 .stat-bar {
   flex: 4;
   background-color: #ddd;
   border-radius: 10px;
-  margin: 0 5px; /* Reduced margin to move closer to the names */
+  margin: 0 5px;
   overflow: hidden;
   position: relative;
   height: 20px;
-  width: 100px; /* Set the width to a fixed value */
+  width: 100px;
 }
 
-/* Stat bar label styling */
 .stat-bar::after {
-  content: attr(data-value); /* Use the data-value attribute for content */
+  content: attr(data-value);
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  line-height: 20px; /* Center the text vertically */
-  z-index: 1; /* Ensure it's above the fill */
+  line-height: 20px;
+  z-index: 1;
 }
 
-/* Stat bar fill styling */
 .stat-bar-fill {
   height: 100%;
   background-color: #4caf50;
   border-radius: 10px 0 0 10px;
-  text-align: left; /* Align text to the left */
-  position: relative; /* Ensure the fill is relative positioned within the bar */
+  text-align: left;
+  position: relative;
 }
