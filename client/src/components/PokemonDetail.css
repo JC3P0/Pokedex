@@ -170,7 +170,7 @@
   padding: 1px 1px;
   flex-shrink: 0;
   margin-right: 5px;
-  /* display: inline-block; */
+  display: inline-block;
   /* width: auto; */
 }
 
