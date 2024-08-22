@@ -1,22 +1,22 @@
 import React from 'react';
-import typeColors from './typeColors'; // Import type colors utility
-import capitalizeFirstLetter from './capitalizeFirstLetter'; // Import utility to capitalize the first letter
+import typeColors from './typeColors';
+import capitalizeFirstLetter from './capitalizeFirstLetter';
 
 // Function to render the Pokemon category based on active category or favorites
 const renderPokemonCategory = ({
-    activePokemonCategory, // Currently active Pokemon category
-    showFavorites, // Flag to show favorite Pokemon
-    favorites, // List of favorite Pokemon
-    toggleFavorite, // Function to toggle favorite status
-    pokemon, // List of all Pokemon
-    handleNavigate, // Function to navigate to a Pokemon's detail page
+    activePokemonCategory,
+    showFavorites,
+    favorites,
+    toggleFavorite,
+    pokemon,
+    handleNavigate,
 }) => {
     // If no category is active and favorites are not to be shown, return null
     if (!activePokemonCategory && !showFavorites) return null;
 
     // Filter Pokemon based on the active category or favorites
     const filteredPokemon = showFavorites
-        ? pokemon.filter(p => favorites.some(f => f.id === p.id)) // Show only favorite Pokemon
+        ? pokemon.filter(p => favorites.some(f => f.id === p.id))
         : activePokemonCategory
         ? pokemon.filter(p => {
             // Filter Pokemon based on the active generation category
@@ -49,10 +49,10 @@ const renderPokemonCategory = ({
     // Map through the filtered Pokemon and render each one
     return filteredPokemon.map(p => {
         if (!p) return null;
-        const type1 = p.types && p.types[0]?.name; // Get the primary type
-        const type2 = p.types && p.types[1]?.name; // Get the secondary type if available
-        const typeColor1 = typeColors[type1] || '#f0f0f0'; // Get the color for the primary type
-        const typeColor2 = type2 ? (typeColors[type2] || '#f0f0f0') : null; // Get the color for the secondary type
+        const type1 = p.types && p.types[0]?.name;
+        const type2 = p.types && p.types[1]?.name;
+        const typeColor1 = typeColors[type1] || '#f0f0f0';
+        const typeColor2 = type2 ? (typeColors[type2] || '#f0f0f0') : null;
 
         // Render the Pokemon card
         return (
@@ -76,4 +76,4 @@ const renderPokemonCategory = ({
     });
 };
 
-export default renderPokemonCategory; // Export the function for use in other parts of the application
+export default renderPokemonCategory;

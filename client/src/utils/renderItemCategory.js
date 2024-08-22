@@ -1,22 +1,22 @@
 import React from 'react';
-import capitalizeFirstLetter from './capitalizeFirstLetter'; // Import utility to capitalize the first letter
+import capitalizeFirstLetter from './capitalizeFirstLetter';
 
 // Function to render the item category based on active category or favorites
 const renderItemCategory = ({
-    showCategory, // Flag to show items by category
-    showFavorites, // Flag to show favorite items
-    items, // List of all items
-    activeItemCategory, // Currently active item category
-    toggleItemFavorite, // Function to toggle favorite status
-    itemsFavorites, // List of favorite items
-    handleNavigate, // Function to navigate to an item's detail page
+    showCategory,
+    showFavorites,
+    items,
+    activeItemCategory,
+    toggleItemFavorite,
+    itemsFavorites,
+    handleNavigate,
 }) => {
     // If no category is active and favorites are not to be shown, return null
     if (!showCategory && !showFavorites) return null;
 
     // Filter items based on the active category or favorites
     const filteredItems = showFavorites
-        ? items.filter(i => itemsFavorites.some(f => f.id === i.id)) // Show only favorite items
+        ? items.filter(i => itemsFavorites.some(f => f.id === i.id))
         : items.filter(i => {
             // Filter items based on the active category
             switch (activeItemCategory) {
@@ -65,4 +65,4 @@ const renderItemCategory = ({
     ));
 };
 
-export default renderItemCategory; // Export the function for use in other parts of the application
+export default renderItemCategory;

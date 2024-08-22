@@ -1,54 +1,53 @@
 // server/models/Item.js
 
-const mongoose = require('mongoose'); // Import mongoose for creating and interacting with MongoDB schemas
+const mongoose = require('mongoose');
 
 // Define the schema for an Item document
 const itemSchema = new mongoose.Schema({
-    id: { type: Number, required: true, unique: true }, // Unique ID for the item, required
-    name: { type: String, required: true }, // Name of the item, required
-    cost: { type: Number }, // Cost of the item
-    fling_power: { type: Number }, // Fling power of the item
+    id: { type: Number, required: true, unique: true },
+    name: { type: String, required: true },
+    cost: { type: Number },
+    fling_power: { type: Number },
     fling_effect: {
-        name: { type: String }, // Name of the fling effect
-        url: { type: String } // URL to the fling effect details
+        name: { type: String },
+        url: { type: String }
     },
     attributes: [{
-        name: { type: String }, // Name of the attribute
-        url: { type: String } // URL to the attribute details
+        name: { type: String },
+        url: { type: String }
     }],
     category: {
-        name: { type: String }, // Name of the category
-        url: { type: String } // URL to the category details
+        name: { type: String },
+        url: { type: String }
     },
-    effect: { type: String }, // Effect of the item
-    short_effect: { type: String }, // Short effect description of the item
+    effect: { type: String },
+    short_effect: { type: String },
     language: {
-        name: { type: String }, // Language of the effect description
-        url: { type: String } // URL to the language details
+        name: { type: String },
+        url: { type: String }
     },
-    text: { type: String }, // Flavor text of the item
+    text: { type: String },
     version_group: {
-        name: { type: String }, // Name of the version group
-        url: { type: String } // URL to the version group details
+        name: { type: String },
+        url: { type: String }
     },
-    game_index: { type: Number }, // Game index of the item
+    game_index: { type: Number },
     generation: {
-        name: { type: String }, // Name of the generation
-        url: { type: String } // URL to the generation details
+        name: { type: String },
+        url: { type: String }
     },
     sprites: {
-        default: { type: String } // URL to the default sprite of the item
+        default: { type: String }
     },
     held_by: [{
-        name: { type: String }, // Name of the Pokémon that holds the item
-        url: { type: String } // URL to the Pokémon details
+        name: { type: String },
+        url: { type: String }
     }],
     evolution_chain: {
-        url: { type: String } // URL to the evolution chain details
+        url: { type: String }
     }
 });
 
-// Create a model for Item using the defined schema
 const Item = mongoose.model('Item', itemSchema);
 
-module.exports = Item; // Export the Item model to be used in other parts of the application
+module.exports = Item;

@@ -10,7 +10,7 @@ const itemFavoritesStore = "itemFavorites";
 // Function to open the IndexedDB database
 const openDB = () => {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(dbName, 1); // Open the database with version 1
+    const request = indexedDB.open(dbName, 1);
 
     // Handle database upgrades
     request.onupgradeneeded = (event) => {

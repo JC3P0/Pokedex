@@ -46,20 +46,20 @@ import {
 import pokedexImage from '../assets/pokedex-image.png';
 
 const MainMenu = () => {
-  const [searchTerm, setSearchTerm] = useState(''); // State for the search input value
-  const [pokemon, setPokemon] = useState([]); // State to store Pokémon data
-  const [items, setItems] = useState([]); // State to store items data
-  const [filteredPokemon, setFilteredPokemon] = useState([]); // State for filtered Pokémon based on search
-  const [filteredItems, setFilteredItems] = useState([]); // State for filtered items based on search
-  const [showPokemon, setShowPokemon] = useState(true); // State to toggle between showing Pokémon or items
-  const [showFavorites, setShowFavorites] = useState(false); // State to toggle between showing all or favorite items
-  const [pokemonFavorites, setPokemonFavorites] = useState([]); // State to store favorite Pokémon
-  const [itemFavorites, setItemFavorites] = useState([]); // State to store favorite items
-  const [activePokemonCategory, setActivePokemonCategory] = useState(null); // State to track active Pokémon category
-  const [activeItemCategory, setActiveItemCategory] = useState(null); // State to track active item category
+  const [searchTerm, setSearchTerm] = useState('');
+  const [pokemon, setPokemon] = useState([]);
+  const [items, setItems] = useState([]);
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [showPokemon, setShowPokemon] = useState(true);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [pokemonFavorites, setPokemonFavorites] = useState([]);
+  const [itemFavorites, setItemFavorites] = useState([]);
+  const [activePokemonCategory, setActivePokemonCategory] = useState(null);
+  const [activeItemCategory, setActiveItemCategory] = useState(null);
 
-  const navigate = useNavigate(); // Hook to navigate programmatically
-  const location = useLocation(); // Hook to access the current location
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     // Function to fetch data in chunks and save to IndexedDB
@@ -277,4 +277,4 @@ const MainMenu = () => {
   );
 };
 
-export default MainMenu; // Export the component for use in other parts of the application
+export default MainMenu;
