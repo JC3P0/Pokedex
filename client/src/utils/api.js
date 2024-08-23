@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance with a base URL depending on the environment
 const api = axios.create({
-    baseURL: process.env.NODE_ENV === 'production' ? '/.netlify/functions' : 'http://localhost:3001/api'
+    baseURL: process.env.NODE_ENV === 'production' ? '/.netlify/functions' : 'http://localhost:8888/.netlify/functions'
 });
 
 // Function to fetch paginated data from a given URL

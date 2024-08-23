@@ -1,5 +1,9 @@
 /* client/src/components/PokemonDetail.css */
 
+body {
+  background-color: #000000;
+}
+
 .pokemon-detail {
   display: flex;
   justify-content: center;
@@ -18,13 +22,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 375px;
   width: 100%;
+  border: 8px solid #C0C0C0;
 }
 
 .detail-card .pokemon-id {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgba(82, 81, 81, 0.932);
+  background-color: #C0C0C0;
   border-radius: 5px;
   padding: 2px 5px;
   font-size: 0.8em;
@@ -35,14 +40,26 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
+  background-color: #C0C0C0 !important;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  padding: 8px;
+  border-radius: 50%;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 4px 8px rgba(88, 88, 88, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.detail-card .favorite-button:hover {
+  transform: scale(1.1);
 }
 
 .detail-card .pokemon-name {
-  background-color: #504f4f;
+  background-color: #C0C0C0;
   border-radius: 20px;
   padding: 5px 10px;
   margin-top: -10px;
@@ -55,10 +72,20 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background: none;
+  background-color: #C0C0C0 !important; /* Gold background color */
   border: none;
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 10px; /* Padding inside the button */
+  color: #333; /* Dark color for the text or icon */
+  font-size: 1.2em; /* Size of the button content */
   cursor: pointer;
-  font-size: 1.2em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.detail-card .back-button:hover {
+  background-color: #FFC107; /* Slightly darker gold on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
 
 .detail-card .toggle-image-button {
@@ -89,6 +116,9 @@
 }
 
 .base-experience {
+  background-color: #DAA520;
+  border-radius: 20px;
+  padding: 2px 5px;
   margin-top: -10px;
   margin-bottom: 10px;
   font-size: 1em;
@@ -106,6 +136,7 @@
 .pokemon-type {
   padding: 5px 10px;
   border-radius: 10px;
+  border: 2px solid #2a3439;
   color: white;
   font-weight: bold;
   text-transform: capitalize;
@@ -122,7 +153,9 @@
 
 .measurement {
   text-align: center;
-  flex: 1;
+  flex: 2;
+  background-color: #A9A9A9;
+  border-radius: 10px;
 }
 
 .measurement-value {
@@ -132,17 +165,23 @@
 
 .measurement-label {
   font-size: 0.8em;
-  color: #666;
+  color: #4e4e4e;
+  background-color: #B2DFDB;
+  padding: 3px;
+  border-radius: 5px;
+  display: inline-block;
 }
 
 .base-stats-title {
   text-align: center;
-  flex: 2;
   font-size: 1.2em;
   font-weight: bold;
-  background-color: rgba(77, 77, 77, 0.945);
+  background-color: #ddd; /* Light gray background */
   border-radius: 10px;
-  padding: 1px 1px;
+  padding: 2px 8px; /* Adjust padding to keep background tight to text */
+  margin: 0 30px; /* Adds space around the base stats title */
+  flex-grow: 0; /* Prevents the flex item from expanding */
+  display: inline-block; /* Keeps the background tight to the text */
 }
 
 .pokemon-stats {
@@ -165,7 +204,7 @@
   font-weight: bold;
   text-align: center;
   width: 50px;
-  background-color: #f5f5f5;
+  background-color: #ddd;
   border-radius: 10px;
   padding: 1px 1px;
 }
