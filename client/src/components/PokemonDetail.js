@@ -89,26 +89,26 @@ const PokemonDetail = () => {
 
   const type1 = pokemon.types && pokemon.types[0]?.name; // Primary type of the Pokémon
   const type2 = pokemon.types && pokemon.types[1]?.name; // Secondary type of the Pokémon, if any
-  const typeColor1 = typeColors[type1] || '#f0f0f0'; // Color for the primary type
-  const typeColor2 = type2 ? typeColors[type2] : null; // Color for the secondary type, if any
-  const typeColor3 = '#f0f0f0'; // Default background color
-
+  const typeColor1 = typeColors[type1]; // Color for the primary type
+  const typeColor2 = type2 ? typeColors[type2] : '#2a3439'; // Color for the secondary type, if any
+  const baseColor1 = typeColor1; // Assign the first type color to one cube face
+  const baseColor2 = typeColor2; // Assign the second type color to the other cube face
+  
   // Set background color and gradient based on Pokémon types
-  const backgroundColor = typeColor1;
-  const backgroundImage = type2
-    ? `linear-gradient(30deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
-       linear-gradient(150deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
-       linear-gradient(30deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
-       linear-gradient(150deg, ${typeColor2} 12%, transparent 12.5%, transparent 87%, ${typeColor2} 87.5%, ${typeColor2}), 
-       linear-gradient(60deg, ${typeColor2}77 25%, transparent 25.5%, transparent 75%, ${typeColor2}77 75%, ${typeColor2}77), 
-       linear-gradient(60deg, ${typeColor2}77 25%, transparent 25.5%, transparent 75%, ${typeColor2}77 75%, ${typeColor2}77)`
-    : `linear-gradient(30deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
-       linear-gradient(150deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
-       linear-gradient(30deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
-       linear-gradient(150deg, ${typeColor3} 12%, transparent 12.5%, transparent 87%, ${typeColor3} 87.5%, ${typeColor3}), 
-       linear-gradient(60deg, ${typeColor3}77 25%, transparent 25.5%, transparent 75%, ${typeColor3}77 75%, ${typeColor3}77), 
-       linear-gradient(60deg, ${typeColor3}77 25%, transparent 25.5%, transparent 75%, ${typeColor3}77 75%, ${typeColor3}77)`;
-
+  const backgroundImage = `linear-gradient(30deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
+  linear-gradient(150deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
+  linear-gradient(30deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
+  linear-gradient(150deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
+  linear-gradient(60deg, ${baseColor2} 25%, transparent 25.5%, transparent 75%, ${baseColor2} 75%, ${baseColor2}), 
+  linear-gradient(60deg, ${baseColor2} 25%, transparent 25.5%, transparent 75%, ${baseColor2} 75%, ${baseColor2})`;
+  
+  const cardStyle = {
+    backgroundColor: '#556', // Overall background color
+    backgroundImage: backgroundImage,
+    backgroundSize: '80px 140px',
+    backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px',
+  };
+  
   // Get the maximum stat value for scaling the stat bars
   const maxStat = Math.max(...pokemon.stats.map(stat => stat.base_stat));
 
@@ -122,13 +122,7 @@ const PokemonDetail = () => {
     <div className="pokemon-detail">
       <div 
         className="detail-card" 
-        style={{
-          backgroundColor: backgroundColor,
-          backgroundImage: backgroundImage,
-          opacity: 0.8,
-          backgroundSize: '20px 35px',
-          backgroundPosition: '0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px'
-        }}
+        style={cardStyle}
       >
         <span className="pokemon-id">#{pokemon.id}</span>
         <button className="favorite-button" onClick={() => toggleFavorite(pokemon._id, pokemon)}>
