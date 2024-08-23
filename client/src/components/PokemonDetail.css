@@ -27,6 +27,7 @@ body {
 
 .detail-card .pokemon-id {
   position: absolute;
+  border: 2px solid #2a3439;
   top: 10px;
   left: 10px;
   background-color: #C0C0C0;
@@ -41,6 +42,7 @@ body {
   top: 10px;
   right: 10px;
   background-color: #C0C0C0 !important;
+  border: 2px solid #2a3439;
   cursor: pointer;
   font-size: 1.5em;
   padding: 8px;
@@ -60,6 +62,7 @@ body {
 
 .detail-card .pokemon-name {
   background-color: #C0C0C0;
+  border: 2px solid #2a3439;
   border-radius: 20px;
   padding: 5px 10px;
   margin-top: -10px;
@@ -73,7 +76,7 @@ body {
   bottom: 10px;
   left: 10px;
   background-color: #C0C0C0 !important; /* Gold background color */
-  border: none;
+  border: 2px solid #2a3439;
   border-radius: 10px; /* Rounded corners */
   padding: 5px 10px; /* Padding inside the button */
   color: #333; /* Dark color for the text or icon */
@@ -94,7 +97,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background-color: #4caf50;
-  border: none;
+  border: 2px outset #2a3439;
   border-radius: 25px;
   color: white;
   padding: 5px 10px;
@@ -109,6 +112,9 @@ body {
 }
 
 .detail-card .pokemon-image {
+  background-color: #c9c9c9; /* Light gray background, adjust as needed */
+  border-radius: 10px; /* Rounded corners to match other elements */
+  border: 2px outset #2a3439;
   width: 175px;
   height: auto;
   margin-top: 14px;
@@ -118,6 +124,7 @@ body {
 .base-experience {
   background-color: #DAA520;
   border-radius: 20px;
+  border: 2px solid #2a3439;
   padding: 2px 5px;
   margin-top: -10px;
   margin-bottom: 10px;
@@ -147,7 +154,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 300px;
+  max-width: 325px;
   margin-bottom: 10px;
 }
 
@@ -155,6 +162,7 @@ body {
   text-align: center;
   flex: 2;
   background-color: #A9A9A9;
+  border: 2px solid #2a3439;
   border-radius: 10px;
 }
 
@@ -177,6 +185,7 @@ body {
   font-size: 1.2em;
   font-weight: bold;
   background-color: #ddd; /* Light gray background */
+  border: 2px solid #2a3439;
   border-radius: 10px;
   padding: 2px 8px; /* Adjust padding to keep background tight to text */
   margin: 0 30px; /* Adds space around the base stats title */
@@ -185,6 +194,10 @@ body {
 }
 
 .pokemon-stats {
+  background-color: #c9c9c9; /* Light gray background, adjust as needed */
+  border-radius: 10px; /* Rounded corners to match other elements */
+  border: 2px outset #2a3439;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,6 +216,7 @@ body {
 .stat-name {
   font-weight: bold;
   text-align: center;
+  border: 2px solid #2a3439;
   width: 50px;
   background-color: #ddd;
   border-radius: 10px;
@@ -213,6 +227,7 @@ body {
   flex: 4;
   background-color: #ddd;
   border-radius: 10px;
+  border: 2px solid #2a3439;
   margin: 0 5px;
   overflow: hidden;
   position: relative;
