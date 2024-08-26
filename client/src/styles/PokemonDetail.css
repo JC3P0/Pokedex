@@ -1,15 +1,12 @@
 /* client/src/components/PokemonDetail.css */
 
-body {
-  background-color: #000000;
-}
-
 .pokemon-detail {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   text-align: center;
+  background-color: #000000;
 }
 
 .detail-card {
@@ -75,20 +72,20 @@ body {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background-color: #C0C0C0 !important; /* Gold background color */
+  background-color: #C0C0C0 !important;
   border: 2px solid #2a3439;
-  border-radius: 10px; /* Rounded corners */
-  padding: 5px 10px; /* Padding inside the button */
-  color: #333; /* Dark color for the text or icon */
-  font-size: 1.2em; /* Size of the button content */
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #333;
+  font-size: 1.2em;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .detail-card .back-button:hover {
-  background-color: #FFC107; /* Slightly darker gold on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  background-color: #FFC107;
+  transform: scale(1.05);
 }
 
 .detail-card .toggle-image-button {
@@ -112,8 +109,8 @@ body {
 }
 
 .detail-card .pokemon-image {
-  background-color: #c9c9c9; /* Light gray background, adjust as needed */
-  border-radius: 10px; /* Rounded corners to match other elements */
+  background-color: #c9c9c9;
+  border-radius: 10px;
   border: 2px outset #2a3439;
   width: 175px;
   height: auto;
@@ -184,18 +181,18 @@ body {
   text-align: center;
   font-size: 1.2em;
   font-weight: bold;
-  background-color: #ddd; /* Light gray background */
+  background-color: #ddd;
   border: 2px solid #2a3439;
   border-radius: 10px;
-  padding: 2px 8px; /* Adjust padding to keep background tight to text */
-  margin: 0 30px; /* Adds space around the base stats title */
-  flex-grow: 0; /* Prevents the flex item from expanding */
-  display: inline-block; /* Keeps the background tight to the text */
+  padding: 2px 8px;
+  margin: 0 30px;
+  flex-grow: 0;
+  display: inline-block;
 }
 
 .pokemon-stats {
-  background-color: #c9c9c9; /* Light gray background, adjust as needed */
-  border-radius: 10px; /* Rounded corners to match other elements */
+  background-color: #c9c9c9;
+  border-radius: 10px;
   border: 2px outset #2a3439;
   padding: 10px;
   display: flex;

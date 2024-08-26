@@ -1,11 +1,5 @@
 // src/utils/ItemToggleHandlers.js
 
-// Function to toggle the display of favorite items
-export const toggleShowFavorites = ({ setShowFavorites, setActiveItemCategory, ...setters }) => {
-    setShowFavorites(prev => !prev);
-    setActiveItemCategory(''); 
-};
-
 export const toggleShowPokeBalls = ({ setShowPokeBalls, setActiveItemCategory, ...setters }) => {
     setActiveItemCategory('pokeballs');
     Object.keys(setters).forEach(key => setters[key](false));

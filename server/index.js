@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to the MongoDB database using connection string from environment variables
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));

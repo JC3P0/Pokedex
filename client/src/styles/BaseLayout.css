@@ -1,0 +1,156 @@
+/* client/src/components/BaseLayout.css */
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-bar {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading-bar p {
+  font-size: 18px;
+  color: #333;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.base-layout {
+  text-align: center;
+  padding: 20px;
+  background-image: url('https://raw.githubusercontent.com/JC3P0/Pokedex/main/client/src/assets/background-image.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.header-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  position: sticky;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.search-form {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.search-form input {
+  padding: 10px;
+  width: 200px;
+}
+
+.search-suggestions {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  max-width: 40%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-suggestion {
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.search-suggestion:hover {
+  background-color: #f0f0f0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: none;
+  margin: 0 10px;
+}
+
+.tab.active {
+  background-color: #ccc;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tab.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.favorites {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.favorite-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.favorite-button:hover {
+  background-color: darkgreen;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.category-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.category-button.active, .category-button:hover {
+  background-color: darkblue;
+}

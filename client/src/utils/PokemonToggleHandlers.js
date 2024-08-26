@@ -50,10 +50,3 @@ export const toggleShowGen9 = ({ setActivePokemonCategory, ...setters }) => {
     setActivePokemonCategory('gen9');
     Object.keys(setters).forEach(key => setters[key](false));
 };
-
-// Function to toggle the display of favorite Pokemon
-export const toggleShowPokemonFavorites = ({ setShowFavorites, setActivePokemonCategory, setActiveItemCategory }) => {
-    setShowFavorites(prev => !prev);
-    setActivePokemonCategory('');
-    setActiveItemCategory('');
-};
