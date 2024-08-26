@@ -4,7 +4,7 @@ const Pokemon = require('../models/Pokemon');
 const Item = require('../models/Item');
 const dotenv = require('dotenv');
 
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 // Connect to the MongoDB database using connection string from environment variables
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });

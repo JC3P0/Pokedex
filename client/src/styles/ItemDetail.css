@@ -6,10 +6,9 @@
   align-items: center;
   height: 100vh;
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: #000000;
 }
 
-/* Card container for displaying item details */
 .detail-card {
   position: relative;
   display: flex;
@@ -70,7 +69,6 @@
   margin-bottom: 10px;
 }
 
-/* Styling for item details */
 .detail-card .item-category,
 .detail-card .item-cost,
 .detail-card .item-effect,

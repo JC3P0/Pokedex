@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './ItemDetail.css';
+import '../styles/ItemDetail.css';
 import { getItemByIdFromIndexedDB, getItemFavoritesFromIndexedDB, toggleItemFavoriteInIndexedDB } from '../utils/indexedDB';
 
 const ItemDetail = () => {

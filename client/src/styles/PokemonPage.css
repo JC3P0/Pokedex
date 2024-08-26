@@ -1,0 +1,82 @@
+.pokemon-container {
+  text-align: center;
+  padding: 20px;
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.pokemon-container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-container .pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pokemon-container .pokemon-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 125px;
+  height: 125px;
+  transition: background-color 0.3s, opacity 0.3s;
+  z-index: 1;
+}
+
+.pokemon-container .pokemon-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1px;
+}
+
+.pokemon-container .pokemon-name {
+  background-color: #eee;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-top: 5px;
+  font-size: 1em;
+  color: #333;
+}
+
+.pokemon-container .pokemon-types {
+  opacity: 0;
+}
+
+.pokemon-container .pokemon-card:hover .pokemon-types {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+
+/* Background styling for different Pokémon types */
+.pokemon-container .normal { background: linear-gradient(to bottom right, #A4A4A4, #a4a4a463); }
+.pokemon-container .fire { background: linear-gradient(to bottom right, #FFA07A, #ff634773); }
+.pokemon-container .fighting { background: linear-gradient(to bottom right, #C66F39, #c66f3975); }
+.pokemon-container .water { background: linear-gradient(to bottom right, #539AD4, rgba(30, 143, 255, 0.514)); }
+.pokemon-container .flying { background: linear-gradient(to bottom right, #4866AC, rgba(70, 131, 180, 0.5)); }
+.pokemon-container .grass { background: linear-gradient(to bottom right, #52A938, #52a93871); }
+.pokemon-container .poison { background: linear-gradient(to bottom right, #7C57A1, rgba(137, 43, 226, 0.452)); }
+.pokemon-container .electric { background: linear-gradient(to bottom right, #FFD700, rgba(255, 236, 139, 0.486)); }
+.pokemon-container .ground { background: linear-gradient(to bottom right, #DEB887, rgba(210, 180, 140, 0.521)); }
+.pokemon-container .psychic { background: linear-gradient(to bottom right, #FF69B4, rgba(255, 20, 145, 0.514)); }
+.pokemon-container .rock { background: linear-gradient(to bottom right, #B8860B, #b8870b6e); }
+.pokemon-container .ice { background: linear-gradient(to bottom right, #ADD8E6, rgba(176, 224, 230, 0.527)); }
+.pokemon-container .bug { background: linear-gradient(to bottom right, #9A70AE, rgba(106, 142, 35, 0.493)); }
+.pokemon-container .dragon { background: linear-gradient(to bottom right, #6A5ACD, rgba(71, 61, 139, 0.479)); }
+.pokemon-container .ghost { background: linear-gradient(to bottom right, #4B0082, rgba(137, 43, 226, 0.493)); }
+.pokemon-container .dark { background: linear-gradient(to bottom right, #0B0E0F, rgba(47, 79, 79, 0.452)); }
+.pokemon-container .steel { background: linear-gradient(to bottom right, #C0C0C0, rgba(169, 169, 169, 0.466)); }
+.pokemon-container .fairy { background: linear-gradient(to bottom right, #FFC0CB, rgba(255, 182, 193, 0.411)); }
