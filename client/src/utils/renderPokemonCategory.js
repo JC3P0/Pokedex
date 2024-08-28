@@ -57,15 +57,11 @@ const renderPokemonCategory = ({
         // Render the Pokemon card
         return (
             <div key={p.id} className={`pokemon-card ${type1}`} onClick={() => handleNavigate(p.id)}>
-                <div className="card-header">
-                    <span className="pokemon-id">#{p.id}</span>
-                    <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleFavorite(p._id, p); }}>
-                        {favorites.some(f => f._id === p._id) ? '❤️' : '♡'}
-                    </button>
-                </div>
-                {p.sprites && p.sprites.front_default && (
-                    <img src={p.sprites.front_default} alt={p.name} />
-                )}
+                <span className="pokemon-id">#{p.id}</span>
+                <button className="pokemon-card-favorite-button" onClick={(e) => { e.stopPropagation(); toggleFavorite(p._id, p); }}>
+                    {favorites.some(f => f._id === p._id) ? '❤️' : '♡'}
+                </button>
+                {p.sprites && p.sprites.front_default && (<img src={p.sprites.front_default} alt={p.name} />)}
                 <p className="pokemon-name">{capitalizeFirstLetter(p.name)}</p>
                 <div className="pokemon-types">
                     <span className="pokemon-type" style={{ backgroundColor: typeColor1 }}>{capitalizeFirstLetter(type1)}</span>
