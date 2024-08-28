@@ -51,12 +51,10 @@ const renderItemCategory = ({
     // Map through the filtered items and render each one
     return filteredItems.map(i => (
         <div key={i.id} className="item-card" onClick={() => handleNavigate(i.id)}>
-            <div className="card-header">
-                <span className="item-id">#{i.id}</span>
-                <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleItemFavorite(i._id, i); }}>
-                    {itemsFavorites.some(f => f._id === i._id) ? '❤️' : '♡'}
-                </button>
-            </div>
+            <span className="item-id">#{i.id}</span>
+            <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleItemFavorite(i._id, i); }}>
+                {itemsFavorites.some(f => f._id === i._id) ? '❤️' : '♡'}
+            </button>
             {i.sprites && i.sprites.default && (
                 <img src={i.sprites.default} alt={i.name} />
             )}
