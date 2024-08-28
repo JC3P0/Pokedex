@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/PokemonDetail.css';
+import detail from '../styles/PokemonDetail.module.css';
 import { getPokemonByIdFromIndexedDB, getPokemonFavoritesFromIndexedDB, togglePokemonFavoriteInIndexedDB } from '../utils/indexedDB';
 import typeColors from '../utils/typeColors';
 
@@ -119,48 +119,45 @@ const PokemonDetail = () => {
   const heightFtIn = convertHeightMToFtIn(heightM);
 
   return (
-    <div className="pokemon-detail">
-      <div 
-        className="detail-card" 
-        style={cardStyle}
-      >
-        <span className="pokemon-id">#{pokemon.id}</span>
-        <button className="favorite-button" onClick={() => toggleFavorite(pokemon._id, pokemon)}>
+    <div className={detail.pokemonDetail}>
+      <div className={detail.detailCard} style={cardStyle}>
+        <span className={detail.pokemonId}>#{pokemon.id}</span>
+        <button className={detail.favoriteButton} onClick={() => toggleFavorite(pokemon._id, pokemon)}>
           {favorites.some(f => f._id === pokemon._id) ? '❤️' : '♡'}
         </button>
-        <button className="back-button" onClick={() => navigate('/', { state: { tab: 'pokemon' } })}>
-          ←
+        <button className={detail.backButton} onClick={() => navigate('/', { state: { tab: 'pokemon' } })}>
+         🡄
         </button>
-        <button className="toggle-image-button" onClick={toggleImage}>
+        <button className={detail.shinyButton} onClick={toggleImage}>
           {isShiny ? 'Normal' : 'Shiny'}
         </button>
-        <h1 className="pokemon-name">{capitalizeFirstLetter(pokemon.name)}</h1>
-        <img className="pokemon-image" src={isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default} alt={pokemon.name} />
-        <div className="base-experience">
+        <h1 className={detail.pokemonName}>{capitalizeFirstLetter(pokemon.name)}</h1>
+        <img className={detail.pokemonImage} src={isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default} alt={pokemon.name} />
+        <div className={detail.baseExperience}>
           Base Exp {pokemon.base_experience}
         </div>
-        <div className="pokemon-types">
-          {type1 && <span className="pokemon-type" style={{ backgroundColor: typeColors[type1] }}>{capitalizeFirstLetter(type1)}</span>}
-          {type2 && <span className="pokemon-type" style={{ backgroundColor: typeColors[type2], marginLeft: '10px' }}>{capitalizeFirstLetter(type2)}</span>}
+        <div className={detail.pokemonTypes}>
+          {type1 && <span className={detail.pokemonType} style={{ backgroundColor: typeColors[type1] }}>{capitalizeFirstLetter(type1)}</span>}
+          {type2 && <span className={detail.pokemonType} style={{ backgroundColor: typeColors[type2], marginLeft: '10px' }}>{capitalizeFirstLetter(type2)}</span>}
         </div>
-        <div className="pokemon-measurements-container">
-          <div className="measurement">
-            <div className="measurement-value">{heightFtIn}</div>
-            <div className="measurement-label">Height</div>
+        <div className={detail.pokemonMeasurementsContainer}>
+          <div className={detail.measurement}>
+            <div className={detail.measurementValue}>{heightFtIn}</div>
+            <div className={detail.measurementLabel}>Height</div>
           </div>
-          <div className="base-stats-title">Base Stats</div>
-          <div className="measurement">
-            <div className="measurement-value">{weightLbs} lbs</div>
-            <div className="measurement-label">Weight</div>
+          <div className={detail.baseStatsTitle}>Base Stats</div>
+          <div className={detail.measurement}>
+            <div className={detail.measurementValue}>{weightLbs} lbs</div>
+            <div className={detail.measurementLabel}>Weight</div>
           </div>
         </div>
-        <div className="pokemon-stats">
+        <div className={detail.pokemonStats}>
           {pokemon.stats.map((stat, index) => (
-            <div key={index} className="stat">
-              <span className="stat-name">{statNames[stat.name]}</span>
-              <div className="stat-bar" data-value={stat.base_stat}>
+            <div key={index} className={detail.stat}>
+              <span className={detail.statName}>{statNames[stat.name]}</span>
+              <div className={detail.statBar} data-value={stat.base_stat}>
                 <div
-                  className="stat-bar-fill"
+                  className={detail.statBarFill}
                   style={{ width: `${(stat.base_stat / maxStat) * 100}%` }}
                 >
                 </div>

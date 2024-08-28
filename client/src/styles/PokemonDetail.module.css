@@ -1,6 +1,6 @@
 /* client/src/components/PokemonDetail.css */
 
-.pokemon-detail {
+.pokemonDetail {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   background-color: #000000;
 }
 
-.detail-card {
+.detailCard {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -17,29 +17,30 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 375px;
+  max-width: 360px;
   width: 100%;
   border: 8px solid #C0C0C0;
 }
 
-.detail-card .pokemon-id {
+.pokemonId {
   position: absolute;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   top: 10px;
   left: 10px;
   background-color: #C0C0C0;
   border-radius: 5px;
   padding: 2px 5px;
   font-size: 0.8em;
+  font-weight: bold;
   color: #333;
 }
 
-.detail-card .favorite-button {
+.favoriteButton {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #C0C0C0 !important;
-  border: 2px solid #2a3439;
+  background-color: #C0C0C0;
+  border: 2px outset #2a3439;
   cursor: pointer;
   font-size: 1.5em;
   padding: 8px;
@@ -53,13 +54,13 @@
   transition: transform 0.2s ease;
 }
 
-.detail-card .favorite-button:hover {
+.favoriteButton:hover {
   transform: scale(1.1);
 }
 
-.detail-card .pokemon-name {
+.pokemonName {
   background-color: #C0C0C0;
-  border: 2px solid #2a3439;
+  border: 2px inset #2a3439;
   border-radius: 20px;
   padding: 5px 10px;
   margin-top: -10px;
@@ -68,27 +69,27 @@
   text-transform: capitalize;
 }
 
-.detail-card .back-button {
+.backButton {
   position: absolute;
   bottom: 10px;
   left: 10px;
   background-color: #C0C0C0 !important;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 0px 8px;
   color: #333;
-  font-size: 1.2em;
+  font-size: 1.5em;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.detail-card .back-button:hover {
+.backButton:hover {
   background-color: #FFC107;
   transform: scale(1.05);
 }
 
-.detail-card .toggle-image-button {
+.shinyButton {
   position: absolute;
   top: 55px;
   left: 50%;
@@ -104,24 +105,24 @@
   transition: background-color 0.3s ease;
 }
 
-.detail-card .toggle-image-button:hover {
+.shinyButton:hover {
   background-color: #388e3c;
 }
 
-.detail-card .pokemon-image {
+.pokemonImage {
   background-color: #c9c9c9;
   border-radius: 10px;
-  border: 2px outset #2a3439;
+  border: 2px inset #2a3439;
   width: 175px;
   height: auto;
   margin-top: 14px;
-  margin-bottom: 0px;
+  margin-bottom: -5px;
 }
 
-.base-experience {
+.baseExperience {
   background-color: #DAA520;
   border-radius: 20px;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   padding: 2px 5px;
   margin-top: -10px;
   margin-bottom: 10px;
@@ -130,23 +131,23 @@
   color: #333;
 }
 
-.pokemon-types {
+.pokemonTypes {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.pokemon-type {
+.pokemonType {
   padding: 5px 10px;
   border-radius: 10px;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   color: white;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.pokemon-measurements-container {
+.pokemonMeasurementsContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -159,16 +160,16 @@
   text-align: center;
   flex: 2;
   background-color: #A9A9A9;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   border-radius: 10px;
 }
 
-.measurement-value {
+.measurementValue {
   font-size: 1.2em;
   font-weight: bold;
 }
 
-.measurement-label {
+.measurementLabel {
   font-size: 0.8em;
   color: #4e4e4e;
   background-color: #B2DFDB;
@@ -177,12 +178,12 @@
   display: inline-block;
 }
 
-.base-stats-title {
+.baseStatsTitle {
   text-align: center;
   font-size: 1.2em;
   font-weight: bold;
   background-color: #ddd;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   border-radius: 10px;
   padding: 2px 8px;
   margin: 0 30px;
@@ -190,10 +191,10 @@
   display: inline-block;
 }
 
-.pokemon-stats {
+.pokemonStats {
   background-color: #c9c9c9;
   border-radius: 10px;
-  border: 2px outset #2a3439;
+  border: 2px inset #2a3439;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -210,21 +211,21 @@
   margin-bottom: 10px;
 }
 
-.stat-name {
+.statName {
   font-weight: bold;
   text-align: center;
-  border: 2px solid #2a3439;
+  border: 2px outset #2a3439;
   width: 50px;
   background-color: #ddd;
   border-radius: 10px;
   padding: 1px 1px;
 }
 
-.stat-bar {
+.statBar {
   flex: 4;
   background-color: #ddd;
-  border-radius: 10px;
-  border: 2px solid #2a3439;
+  border-radius: 20px;
+  border: 2px outset #2a3439;
   margin: 0 5px;
   overflow: hidden;
   position: relative;
@@ -232,7 +233,7 @@
   width: 100px;
 }
 
-.stat-bar::after {
+.statBar::after {
   content: attr(data-value);
   position: absolute;
   top: 0;
@@ -243,7 +244,7 @@
   z-index: 1;
 }
 
-.stat-bar-fill {
+.statBarFill {
   height: 100%;
   background-color: #4caf50;
   border-radius: 10px 0 0 10px;

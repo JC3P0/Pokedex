@@ -1,6 +1,7 @@
 import React from 'react';
 import typeColors from './typeColors';
 import capitalizeFirstLetter from './capitalizeFirstLetter';
+import preview from '../styles/PreviewPage.module.css';
 
 // Function to render the Pokemon category based on active category or favorites
 const renderPokemonCategory = ({
@@ -56,16 +57,16 @@ const renderPokemonCategory = ({
 
         // Render the Pokemon card
         return (
-            <div key={p.id} className={`pokemon-card ${type1}`} onClick={() => handleNavigate(p.id)}>
-                <span className="pokemon-id">#{p.id}</span>
-                <button className="pokemon-card-favorite-button" onClick={(e) => { e.stopPropagation(); toggleFavorite(p._id, p); }}>
+            <div key={p.id} className={`${preview.previewCard} ${preview[type1]}`} onClick={() => handleNavigate(p.id)}>
+                <span className={preview.previewId}>#{p.id}</span>
+                <button className={preview.previewFavoriteButton} onClick={(e) => { e.stopPropagation(); toggleFavorite(p._id, p); }}>
                     {favorites.some(f => f._id === p._id) ? '❤️' : '♡'}
                 </button>
                 {p.sprites && p.sprites.front_default && (<img src={p.sprites.front_default} alt={p.name} />)}
-                <p className="pokemon-name">{capitalizeFirstLetter(p.name)}</p>
-                <div className="pokemon-types">
-                    <span className="pokemon-type" style={{ backgroundColor: typeColor1 }}>{capitalizeFirstLetter(type1)}</span>
-                    {type2 && <span className="pokemon-type" style={{ backgroundColor: typeColor2 }}>{capitalizeFirstLetter(type2)}</span>}
+                <p className={preview.previewName}>{capitalizeFirstLetter(p.name)}</p>
+                <div className={preview.previewTypes}>
+                    <span className={preview.previewType} style={{ backgroundColor: typeColor1 }}>{capitalizeFirstLetter(type1)}</span>
+                    {type2 && <span className={preview.previewType} style={{ backgroundColor: typeColor2 }}>{capitalizeFirstLetter(type2)}</span>}
                 </div>
             </div>
         );
