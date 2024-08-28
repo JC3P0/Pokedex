@@ -1,0 +1,125 @@
+.previewContainer {
+  text-align: center;
+  padding: 20px;
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.previewList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.previewId {
+  position: absolute;
+  border: 2px outset #2a3439;
+  top: 10px;
+  left: 10px;
+  background-color: #C0C0C0;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #333;
+}
+
+.previewFavoriteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #C0C0C0;
+  border: 2px outset #2a3439;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0.5px 2px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.previewFavoriteButton:hover {
+  transform: scale(1.1);
+}
+
+.previewCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 2px outset #2a3439;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 125px;
+  height: 140px;
+  transition: background-color 0.3s, opacity 0.3s;
+  z-index: 1;
+}
+
+.previewCard img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1px;
+  padding-top: 20px;
+}
+
+.previewName {
+  background-color: #C0C0C0;
+  border: 2px outset #2a3439;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-top: -3px;
+  font-size: 1em;
+  font-weight: 500;
+  color: #333;
+}
+
+.previewTypes {
+  opacity: 0;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.previewType {
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 1em;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.previewContainer .previewCard:hover .previewTypes {
+  opacity: 0.8;
+}
+
+/* Background styling for different Pokémon types */
+.previewContainer .normal { background: linear-gradient(to bottom right, #A4A4A4, #a4a4a4d7); }
+.previewContainer .fire { background: linear-gradient(to bottom right, #FFA07A, #ff6347dc); }
+.previewContainer .fighting { background: linear-gradient(to bottom right, #C66F39, #c66f39d0); }
+.previewContainer .water { background: linear-gradient(to bottom right, #539AD4, rgba(30, 143, 255, 0.87)); }
+.previewContainer .flying { background: linear-gradient(to bottom right, #4866AC, rgba(70, 131, 180, 0.856)); }
+.previewContainer .grass { background: linear-gradient(to bottom right, #52A938, #52a938d8); }
+.previewContainer .poison { background: linear-gradient(to bottom right, #7C57A1, rgba(137, 43, 226, 0.849)); }
+.previewContainer .electric { background: linear-gradient(to bottom right, #FFD700, rgba(255, 236, 139, 0.884)); }
+.previewContainer .ground { background: linear-gradient(to bottom right, #DEB887, rgba(210, 180, 140, 0.884)); }
+.previewContainer .psychic { background: linear-gradient(to bottom right, #FF69B4, rgba(255, 20, 145, 0.884)); }
+.previewContainer .rock { background: linear-gradient(to bottom right, #B8860B, #b8870bde); }
+.previewContainer .ice { background: linear-gradient(to bottom right, #ADD8E6, rgba(176, 224, 230, 0.87)); }
+.previewContainer .bug { background: linear-gradient(to bottom right, #9A70AE, rgba(106, 142, 35, 0.897)); }
+.previewContainer .dragon { background: linear-gradient(to bottom right, #6A5ACD, rgba(71, 61, 139, 0.884)); }
+.previewContainer .ghost { background: linear-gradient(to bottom right, #4B0082, rgba(137, 43, 226, 0.89)); }
+.previewContainer .dark { background: linear-gradient(to bottom right, #0B0E0F, rgba(47, 79, 79, 0.897)); }
+.previewContainer .steel { background: linear-gradient(to bottom right, #C0C0C0, rgba(169, 169, 169, 0.829)); }
+.previewContainer .fairy { background: linear-gradient(to bottom right, #FFC0CB, rgba(255, 182, 193, 0.829)); }

@@ -5,7 +5,7 @@ import renderPokemonCategory from '../utils/renderPokemonCategory';
 import renderItemCategory from '../utils/renderItemCategory';
 import { checkCacheAndRedirect } from '../utils/checkCacheAndRedirect';
 import { getPokemonFavoritesFromIndexedDB, getItemFavoritesFromIndexedDB } from '../utils/indexedDB';
-import '../styles/PokemonPage.css';
+import PreviewPage from '../styles/PreviewPage.module.css';
 import '../styles/ItemsPage.css';
 
 const FavoritesPage = () => {

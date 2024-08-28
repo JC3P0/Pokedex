@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/PokemonPage.css';
+import pokemonPage from '../styles/PreviewPage.module.css';
 import BaseLayout from '../utils/BaseLayout';
 import { checkCacheAndRedirect } from '../utils/checkCacheAndRedirect';
 import {
@@ -42,7 +42,7 @@ const PokemonPage = () => {
 
   return (
     <BaseLayout>
-      <div className="pokemon-container">
+      <div className={pokemonPage.previewContainer}>
         <div className="category-buttons">
           <button className={`category-button ${activePokemonCategory === 'all' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'all' })}>Show All Pokémon</button>
           <button className={`category-button ${activePokemonCategory === 'gen1' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen1' })}>Gen I</button>
@@ -55,7 +55,7 @@ const PokemonPage = () => {
           <button className={`category-button ${activePokemonCategory === 'gen8' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen8' })}>Gen VIII</button>
           <button className={`category-button ${activePokemonCategory === 'gen9' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen9' })}>Gen IX</button>
         </div>
-        <div className="pokemon-list">
+        <div className={pokemonPage.previewList}>
           {renderPokemonCategory({
             activePokemonCategory,
             pokemon,
