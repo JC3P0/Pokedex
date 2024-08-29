@@ -39,7 +39,7 @@ const renderPokemonCategory = ({
                 case 'gen8':
                     return p.id > 809 && p.id <= 898;
                 case 'gen9':
-                    return p.id > 898;
+                    return p.id > 898 && p.id <= 1025;
                 case 'all':
                 default:
                     return true;
