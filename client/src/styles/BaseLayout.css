@@ -113,10 +113,9 @@
   font-weight: bold;
 }
 
-.tab.disabled {
-  background-color: #ccc;
+input:disabled, button:disabled {
   cursor: not-allowed;
-  pointer-events: none;
+  opacity: 0.5;
 }
 
 .favorites {

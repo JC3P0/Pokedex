@@ -6,7 +6,7 @@ const SearchSuggestions = ({ suggestions, onClick }) => {
       <div className="search-suggestions">
         {suggestions.map((suggestion) => (
           <div
-            key={`${suggestion.type}-${suggestion.id}`} // Prefix the key with a type indicator
+            key={`${suggestion.type}-${suggestion.id}`}
             className="search-suggestion"
             onClick={() => onClick(suggestion)}
           >
