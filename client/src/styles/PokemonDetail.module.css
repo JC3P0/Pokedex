@@ -84,7 +84,7 @@
   background-color: #C0C0C0;
   border: 2px outset #2a3439;
   border-radius: 10px;
-  padding: 0px 5px 0px 5px; /* top, right, bottom, left */
+  padding: 0px 6px 0px 6px; /* top, right, bottom, left */
   color: #333;
   font-size: 1.5em;
   cursor: pointer;
