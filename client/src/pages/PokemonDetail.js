@@ -13,7 +13,6 @@ const PokemonDetail = () => {
   const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
 
-  // Mapping of stat names for display
   const statNames = {
     hp: "HP",
     attack: "ATT",
@@ -24,7 +23,6 @@ const PokemonDetail = () => {
   };
 
   useEffect(() => {
-    // Function to fetch Pokémon data from IndexedDB
     const fetchPokemon = async () => {
       try {
         const data = await getPokemonByIdFromIndexedDB(id);
@@ -40,7 +38,6 @@ const PokemonDetail = () => {
       }
     };
 
-    // Function to fetch favorite Pokémon from IndexedDB
     const fetchFavorites = async () => {
       try {
         const favoritesData = await getPokemonFavoritesFromIndexedDB();
@@ -54,22 +51,18 @@ const PokemonDetail = () => {
     fetchFavorites();
   }, [id]);
 
-  // Utility function to capitalize the first letter of a string
   const capitalizeFirstLetter = (string) => {
     return string ? string.charAt(0).toUpperCase() + string.slice(1) : '';
   };
 
-  // Function to toggle between shiny and normal sprite
   const toggleImage = () => {
     setIsShiny(!isShiny);
   };
 
-  // Function to convert weight from kilograms to pounds
   const convertWeightKgToLbs = (weightKg) => {
     return Math.round(weightKg * 2.20462);
   };
 
-  // Function to convert height from meters to feet and inches
   const convertHeightMToFtIn = (heightM) => {
     const totalInches = heightM * 39.3701;
     const feet = Math.floor(totalInches / 12);
@@ -77,7 +70,6 @@ const PokemonDetail = () => {
     return inches === 12 ? `${feet + 1}'0"` : `${feet}'${inches}"`;
   };
 
-  // Function to toggle the favorite status of a Pokémon
   const toggleFavorite = async (_id, entity) => {
     await togglePokemonFavoriteInIndexedDB(_id, entity);
     const updatedFavorites = await getPokemonFavoritesFromIndexedDB();
@@ -87,14 +79,13 @@ const PokemonDetail = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading Pokémon details: {error.message}</div>;
 
-  const type1 = pokemon.types && pokemon.types[0]?.name; // Primary type of the Pokémon
-  const type2 = pokemon.types && pokemon.types[1]?.name; // Secondary type of the Pokémon, if any
-  const typeColor1 = typeColors[type1]; // Color for the primary type
-  const typeColor2 = type2 ? typeColors[type2] : '#2a3439'; // Color for the secondary type, if any
-  const baseColor1 = typeColor1; // Assign the first type color to one cube face
-  const baseColor2 = typeColor2; // Assign the second type color to the other cube face
-  
-  // Set background color and gradient based on Pokémon types
+  const type1 = pokemon.types && pokemon.types[0]?.name;
+  const type2 = pokemon.types && pokemon.types[1]?.name;
+  const typeColor1 = typeColors[type1];
+  const typeColor2 = type2 ? typeColors[type2] : '#2a3439';
+  const baseColor1 = typeColor1;
+  const baseColor2 = typeColor2;
+
   const backgroundImage = `linear-gradient(30deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
   linear-gradient(150deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
   linear-gradient(30deg, ${baseColor1} 12%, transparent 12.5%, transparent 87%, ${baseColor1} 87.5%, ${baseColor1}),
@@ -103,13 +94,13 @@ const PokemonDetail = () => {
   linear-gradient(60deg, ${baseColor2} 25%, transparent 25.5%, transparent 75%, ${baseColor2} 75%, ${baseColor2})`;
   
   const cardStyle = {
-    backgroundColor: '#556', // Overall background color
+    backgroundColor: '#556',
     backgroundImage: backgroundImage,
     backgroundSize: '80px 140px',
     backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px',
   };
   
-  // Get the maximum stat value for scaling the stat bars
+  // Use the spread operator to expand the array of base_stat values, passing them as individual arguments to Math.max() to return the highest base stat value
   const maxStat = Math.max(...pokemon.stats.map(stat => stat.base_stat));
 
   const weightKg = pokemon.weight / 10;
@@ -127,7 +118,7 @@ const PokemonDetail = () => {
           {favorites.some(f => f._id === pokemon._id) ? '❤️' : '♡'}
         </button>
         <button className={detail.backButton} onClick={() => navigate('/', { state: { tab: 'pokemon' } })}>
-         🡄
+          <span>&#x2794;</span>
         </button>
         <button className={detail.shinyButton} onClick={toggleImage}>
           {isShiny ? 'Normal' : 'Shiny'}
@@ -157,10 +148,7 @@ const PokemonDetail = () => {
             <div key={index} className={detail.stat}>
               <span className={detail.statName}>{statNames[stat.name]}</span>
               <div className={detail.statBar} data-value={stat.base_stat}>
-                <div
-                  className={detail.statBarFill}
-                  style={{ width: `${(stat.base_stat / maxStat) * 100}%` }}
-                >
+                <div className={detail.statBarFill} style={{ width: `${(stat.base_stat / maxStat) * 100}%` }}>
                 </div>
               </div>
             </div>

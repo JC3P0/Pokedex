@@ -81,19 +81,21 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background-color: #C0C0C0 !important;
+  background-color: #C0C0C0;
   border: 2px outset #2a3439;
   border-radius: 10px;
-  padding: 0px 8px 0px 6px; /* top, right, bottom, left */
+  padding: 0px 5px 0px 5px; /* top, right, bottom, left */
   color: #333;
   font-size: 1.5em;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.backButton span {
+  display: inline-block;
+  transform: scaleX(-1); 
 }
 
 .backButton:hover {
-  background-color: #FFC107;
   transform: scale(1.05);
 }
 
