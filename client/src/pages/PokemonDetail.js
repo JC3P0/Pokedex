@@ -122,7 +122,8 @@ const PokemonDetail = () => {
     <div className={detail.pokemonDetail}>
       <div className={detail.detailCard} style={cardStyle}>
         <span className={detail.pokemonId}>#{pokemon.id}</span>
-        <button className={detail.favoriteButton} onClick={() => toggleFavorite(pokemon._id, pokemon)}>
+        <button className={`${detail.favoriteButton} ${favorites.some(f => f._id === pokemon._id) ? detail.favorited : ''}`}
+          onClick={() => toggleFavorite(pokemon._id, pokemon)}>
           {favorites.some(f => f._id === pokemon._id) ? '❤️' : '♡'}
         </button>
         <button className={detail.backButton} onClick={() => navigate('/', { state: { tab: 'pokemon' } })}>

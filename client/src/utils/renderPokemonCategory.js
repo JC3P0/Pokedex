@@ -59,7 +59,7 @@ const renderPokemonCategory = ({
         return (
             <div key={p.id} className={`${preview.previewCard} ${preview[type1]}`} onClick={() => handleNavigate(p.id)}>
                 <span className={preview.previewId}>#{p.id}</span>
-                <button className={preview.previewFavoriteButton} onClick={(e) => { e.stopPropagation(); toggleFavorite(p._id, p); }}>
+                <button className={`${preview.previewFavoriteButton} ${favorites.some(f => f._id === p._id) ? preview.active : ''}`} onClick={(e) => {e.stopPropagation(); toggleFavorite(p._id, p);}}>
                     {favorites.some(f => f._id === p._id) ? '❤️' : '♡'}
                 </button>
                 {p.sprites && p.sprites.front_default && (<img src={p.sprites.front_default} alt={p.name} />)}

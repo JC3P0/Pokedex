@@ -58,26 +58,27 @@
 .search-form {
   margin-bottom: 20px;
   position: relative;
+  border-bottom: none;
 }
 
 .search-form input {
   padding: 10px;
   width: 200px;
+  margin: 0;
+  box-shadow: none;
 }
 
 .search-suggestions {
   position: absolute;
   background-color: white;
-  border: 1px solid #ddd;
   max-width: 40%;
   max-height: 200px;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 25;
   left: 0;
   right: 0;
   margin: 0 auto;
   top: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .search-suggestion {
@@ -100,12 +101,14 @@
   padding: 10px 20px;
   cursor: pointer;
   background-color: #f0f0f0;
+  outline: 2px inset #000;
   border: none;
   margin: 0 10px;
 }
 
 .tab.active {
   background-color: #ccc;
+  outline: 3px outset #000;
   font-size: 14px;
   font-weight: bold;
 }
