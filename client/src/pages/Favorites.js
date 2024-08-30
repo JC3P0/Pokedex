@@ -34,9 +34,9 @@ const FavoritesPage = () => {
   return (
     <BaseLayout>
     <h2>Favorites</h2>
-      <div className="pokemon-container">
+      <div className={PreviewPage.previewContainer}>
         <h2>Pokémon</h2>
-        <div className="pokemon-list">
+        <div className={PreviewPage.previewList}>
           {renderPokemonCategory({
             activePokemonCategory: null,
             showFavorites: true,

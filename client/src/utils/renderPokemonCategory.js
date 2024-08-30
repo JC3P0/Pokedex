@@ -1,6 +1,7 @@
 import React from 'react';
 import typeColors from './typeColors';
 import capitalizeFirstLetter from './capitalizeFirstLetter';
+import { getImageOrPlaceholder } from '../utils/getImageOrPlaceholder'; // Import the utility function
 import preview from '../styles/PreviewPage.module.css';
 
 // Function to render the Pokemon category based on active category or favorites
@@ -62,7 +63,7 @@ const renderPokemonCategory = ({
                 <button className={`${preview.previewFavoriteButton} ${favorites.some(f => f._id === p._id) ? preview.active : ''}`} onClick={(e) => {e.stopPropagation(); toggleFavorite(p._id, p);}}>
                     {favorites.some(f => f._id === p._id) ? '❤️' : '♡'}
                 </button>
-                {p.sprites && p.sprites.front_default && (<img src={p.sprites.front_default} alt={p.name} />)}
+                <img src={getImageOrPlaceholder(p.sprites?.front_default)} alt={p.name}/>
                 <p className={preview.previewName}>{capitalizeFirstLetter(p.name)}</p>
                 <div className={preview.previewTypes}>
                     <span className={preview.previewType} style={{ backgroundColor: typeColor1 }}>{capitalizeFirstLetter(type1)}</span>
