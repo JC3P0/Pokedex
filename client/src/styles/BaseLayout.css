@@ -58,7 +58,6 @@
 .search-form {
   margin-bottom: 20px;
   position: relative;
-  border-bottom: none;
 }
 
 .search-form input {
@@ -71,7 +70,7 @@
 .search-suggestions {
   position: absolute;
   background-color: white;
-  max-width: 40%;
+  max-width: 220px;
   max-height: 200px;
   overflow-y: auto;
   z-index: 25;
@@ -79,6 +78,13 @@
   right: 0;
   margin: 0 auto;
   top: 100%;
+  cursor: pointer;
+  display: none;
+}
+
+.search-form:focus-within .search-suggestions,
+.search-suggestions:hover {
+  display: block;
 }
 
 .search-suggestion {
