@@ -1,5 +1,7 @@
 import React from 'react';
 import capitalizeFirstLetter from './capitalizeFirstLetter';
+import { getImageOrPlaceholder } from '../utils/getImageOrPlaceholder';
+import preview from '../styles/PreviewPage.module.css';
 
 // Function to render the item category based on active category or favorites
 const renderItemCategory = ({
@@ -50,15 +52,13 @@ const renderItemCategory = ({
 
     // Map through the filtered items and render each one
     return filteredItems.map(i => (
-        <div key={i.id} className="item-card" onClick={() => handleNavigate(i.id)}>
-            <span className="item-id">#{i.id}</span>
-            <button className="favorite-button" onClick={(e) => { e.stopPropagation(); toggleItemFavorite(i._id, i); }}>
+        <div key={i.id} className={preview.previewCard} onClick={() => handleNavigate(i.id)}>
+            <span className={preview.previewId}>#{i.id}</span>
+            <button className={`${preview.previewFavoriteButton} ${itemsFavorites.some(f => f._id === i._id) ? preview.active : ''}`} onClick={(e) => { e.stopPropagation(); toggleItemFavorite(i._id, i); }}>
                 {itemsFavorites.some(f => f._id === i._id) ? '❤️' : '♡'}
             </button>
-            {i.sprites && i.sprites.default && (
-                <img src={i.sprites.default} alt={i.name} />
-            )}
-            <p className="item-name">{capitalizeFirstLetter(i.name)}</p>
+            <img src={getImageOrPlaceholder(i.sprites?.default)} alt={i.name} />
+            <p className={preview.previewName}>{capitalizeFirstLetter(i.name)}</p>
         </div>
     ));
 };

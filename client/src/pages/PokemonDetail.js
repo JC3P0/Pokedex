@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import detail from '../styles/PokemonDetail.module.css';
+import { getImageOrPlaceholder } from '../utils/getImageOrPlaceholder';
+import detail from '../styles/DetailedPage.module.css';
 import { getPokemonByIdFromIndexedDB, getPokemonFavoritesFromIndexedDB, togglePokemonFavoriteInIndexedDB } from '../utils/indexedDB';
 import typeColors from '../utils/typeColors';
 
@@ -110,9 +111,9 @@ const PokemonDetail = () => {
   const heightFtIn = convertHeightMToFtIn(heightM);
 
   return (
-    <div className={detail.pokemonDetail}>
+    <div className={detail.detailContainer}>
       <div className={detail.detailCard} style={cardStyle}>
-        <span className={detail.pokemonId}>#{pokemon.id}</span>
+        <span className={detail.detailId}>#{pokemon.id}</span>
         <button className={`${detail.favoriteButton} ${favorites.some(f => f._id === pokemon._id) ? detail.favorited : ''}`}
           onClick={() => toggleFavorite(pokemon._id, pokemon)}>
           {favorites.some(f => f._id === pokemon._id) ? '❤️' : '♡'}
@@ -123,8 +124,8 @@ const PokemonDetail = () => {
         <button className={detail.shinyButton} onClick={toggleImage}>
           {isShiny ? 'Normal' : 'Shiny'}
         </button>
-        <h1 className={detail.pokemonName}>{capitalizeFirstLetter(pokemon.name)}</h1>
-        <img className={detail.pokemonImage} src={isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default} alt={pokemon.name} />
+        <h1 className={detail.detailName}>{capitalizeFirstLetter(pokemon.name)}</h1>
+        <img className={detail.detailImage} src={getImageOrPlaceholder(isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default)} alt={pokemon.name}/>
         <div className={detail.baseExperience}>
           Base Exp {pokemon.base_experience}
         </div>
