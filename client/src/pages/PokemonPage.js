@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import pokemonPage from '../styles/PreviewPage.module.css';
 import BaseLayout from '../utils/BaseLayout';
 import { checkCacheAndRedirect } from '../utils/checkCacheAndRedirect';
-import {
-  getPokemonFavoritesFromIndexedDB,
-  togglePokemonFavoriteInIndexedDB,
-} from '../utils/indexedDB';
+import { getPokemonFavoritesFromIndexedDB, togglePokemonFavoriteInIndexedDB, } from '../utils/indexedDB';
 import renderPokemonCategory from '../utils/renderPokemonCategory';
 
 const PokemonPage = () => {
