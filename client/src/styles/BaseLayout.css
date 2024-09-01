@@ -143,24 +143,3 @@ input:disabled, button:disabled {
 .favorite-button:hover {
   background-color: darkgreen;
 }
-
-.category-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.category-button {
-  background-color: blue;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  white-space: nowrap;
-}
-
-.category-button.active, .category-button:hover {
-  background-color: darkblue;
-}
