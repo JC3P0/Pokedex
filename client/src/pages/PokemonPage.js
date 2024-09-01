@@ -40,17 +40,17 @@ const PokemonPage = () => {
   return (
     <BaseLayout>
       <div className={pokemonPage.previewContainer}>
-        <div className="category-buttons">
-          <button className={`category-button ${activePokemonCategory === 'all' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'all' })}>Show All Pokémon</button>
-          <button className={`category-button ${activePokemonCategory === 'gen1' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen1' })}>Gen I</button>
-          <button className={`category-button ${activePokemonCategory === 'gen2' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen2' })}>Gen II</button>
-          <button className={`category-button ${activePokemonCategory === 'gen3' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen3' })}>Gen III</button>
-          <button className={`category-button ${activePokemonCategory === 'gen4' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen4' })}>Gen IV</button>
-          <button className={`category-button ${activePokemonCategory === 'gen5' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen5' })}>Gen V</button>
-          <button className={`category-button ${activePokemonCategory === 'gen6' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen6' })}>Gen VI</button>
-          <button className={`category-button ${activePokemonCategory === 'gen7' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen7' })}>Gen VII</button>
-          <button className={`category-button ${activePokemonCategory === 'gen8' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen8' })}>Gen VIII</button>
-          <button className={`category-button ${activePokemonCategory === 'gen9' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen9' })}>Gen IX</button>
+        <div className={pokemonPage.categoryButtons}>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'all' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'all' })}>Show All Pokémon</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen1' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen1' })}>Gen I</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen2' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen2' })}>Gen II</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen3' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen3' })}>Gen III</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen4' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen4' })}>Gen IV</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen5' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen5' })}>Gen V</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen6' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen6' })}>Gen VI</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen7' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen7' })}>Gen VII</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen8' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen8' })}>Gen VIII</button>
+          <button className={`${pokemonPage.categoryButton} ${activePokemonCategory === 'gen9' ? 'active' : ''}`} onClick={() => toggleShowPokemonByGeneration({ setActivePokemonCategory, generation: 'gen9' })}>Gen IX</button>
         </div>
         <div className={pokemonPage.previewList}>
           {renderPokemonCategory({
