@@ -98,7 +98,7 @@
 
 .previewCard img {
   width: 100px;
-  height: 100px;
+  height: auto;
   margin-top: auto;
   margin-bottom: auto;
   padding-top: 20px;

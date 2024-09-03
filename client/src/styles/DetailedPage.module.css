@@ -1,4 +1,4 @@
-/* client/src/components/PokemonDetail.css */
+/* client/src/styles/DetailedPage.module.css */
 
 .detailContainer {
   display: flex;
@@ -262,4 +262,13 @@
   border-radius: 10px 0 0 10px;
   text-align: left;
   position: relative;
+}
+
+.detailCategory,
+.detailCost,
+.detailEffect,
+.detailFlingPower {
+  font-size: 1em;
+  margin-bottom: 2px;
+  color: #000000;
 }
