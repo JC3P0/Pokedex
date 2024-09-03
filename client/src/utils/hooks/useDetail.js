@@ -29,7 +29,8 @@ const useDetail = (type) => {
         }
 
         if (!data) {
-          throw new Error(`${type.charAt(0).toUpperCase() + type.slice(1)} not found in IndexedDB`);
+          navigate('/');
+          return;
         }
 
         setEntity(data);
@@ -38,6 +39,7 @@ const useDetail = (type) => {
         console.error(`Error fetching ${type}:`, error);
         setError(error);
         setLoading(false);
+        navigate('/');
       }
     };
 
@@ -57,7 +59,7 @@ const useDetail = (type) => {
 
     fetchData();
     fetchFavorites();
-  }, [id, type]);
+  }, [id, type, navigate]);
 
   const toggleFavorite = async (_id, entity) => {
     if (type === 'item') {
