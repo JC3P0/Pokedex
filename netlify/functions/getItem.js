@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Item = require('../../server/models/Item');
 
 mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
 });
 
 exports.handler = async (event, context) => {

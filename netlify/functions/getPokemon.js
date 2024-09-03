@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Pokemon = require('../../server/models/Pokemon');
 
 mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
 });
 
 exports.handler = async (event, context) => {
