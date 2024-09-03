@@ -1,51 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import BaseLayout from '../utils/BaseLayout';
 import renderPokemonCategory from '../utils/renderPokemonCategory';
 import renderItemCategory from '../utils/renderItemCategory';
-import { checkCacheAndRedirect } from '../utils/checkCacheAndRedirect';
-import { getPokemonFavoritesFromIndexedDB, getItemFavoritesFromIndexedDB, togglePokemonFavoriteInIndexedDB, toggleItemFavoriteInIndexedDB } from '../utils/indexedDB';
+import usePreview from '../utils/hooks/usePreview';
 import PreviewPage from '../styles/PreviewPage.module.css';
-import '../styles/ItemsPage.css';
 
 const FavoritesPage = () => {
-  const [favoritePokemon, setFavoritePokemon] = useState([]);
-  const [favoriteItems, setFavoriteItems] = useState([]);
-  const navigate = useNavigate();
+  const {
+    entities: favoritePokemon,
+    favorites: pokemonFavorites,
+    handleNavigate: handleNavigatePokemon,
+    toggleFavorite: toggleFavoritePokemon,
+  } = usePreview('pokemon');
 
-  useEffect(() => {
-    const fetchFavorites = async () => {
-      await checkCacheAndRedirect(navigate, null, null); // Check both items and Pokémon
-
-      const pokemonFavorites = await getPokemonFavoritesFromIndexedDB();
-      const itemFavorites = await getItemFavoritesFromIndexedDB();
-
-      setFavoritePokemon(pokemonFavorites);
-      setFavoriteItems(itemFavorites);
-    };
-
-    fetchFavorites();
-  }, [navigate]);
-
-  const handleNavigate = (id, isPokemon) => {
-    navigate(isPokemon ? `/pokemon/${id}` : `/items/${id}`);
-  };
-  
-  const toggleFavoritePokemon = async (id, pokemon) => {
-    await togglePokemonFavoriteInIndexedDB(id, pokemon);
-    const updatedFavorites = await getPokemonFavoritesFromIndexedDB();
-    setFavoritePokemon(updatedFavorites);
-  }; 
-
-  const toggleFavoriteItem = async (id, item) => {
-    await toggleItemFavoriteInIndexedDB(id, item);
-    const updatedFavorites = await getItemFavoritesFromIndexedDB();
-    setFavoriteItems(updatedFavorites);
-  };
+  const {
+    entities: favoriteItems,
+    favorites: itemFavorites,
+    handleNavigate: handleNavigateItem,
+    toggleFavorite: toggleFavoriteItem,
+  } = usePreview('item');
 
   return (
     <BaseLayout>
-    <h2>Favorites</h2>
+      <h2>Favorites</h2>
       <div className={PreviewPage.previewContainer}>
         <h2>Pokémon</h2>
         <div className={PreviewPage.previewList}>
@@ -53,21 +30,21 @@ const FavoritesPage = () => {
             activePokemonCategory: null,
             showFavorites: true,
             pokemon: favoritePokemon,
-            favorites: favoritePokemon,
-            handleNavigate: (id) => handleNavigate(id, true),
+            favorites: pokemonFavorites,
+            handleNavigate: (id) => handleNavigatePokemon(id),
             toggleFavorite: toggleFavoritePokemon,
           })}
         </div>
-        
+
         <h2>Items</h2>
-        <div className="item-list">
+        <div className={PreviewPage.previewList}>
           {renderItemCategory({
             showCategory: null,
             showFavorites: true,
             items: favoriteItems,
             activeItemCategory: null,
-            itemsFavorites: favoriteItems,
-            handleNavigate: (id) => handleNavigate(id, false),
+            itemsFavorites: itemFavorites,
+            handleNavigate: (id) => handleNavigateItem(id),
             toggleItemFavorite: toggleFavoriteItem,
           })}
         </div>
