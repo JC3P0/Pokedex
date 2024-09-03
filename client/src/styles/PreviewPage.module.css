@@ -142,19 +142,19 @@
 }
 
 /* Background styling for different Pokémon types */
-.previewContainer .normal { background: linear-gradient(to bottom right, #A4A4A4, #a4a4a4d7); }
-.previewContainer .fire { background: linear-gradient(to bottom right, #FFA07A, #ff6347dc); }
+.previewContainer .normal { background: linear-gradient(to bottom right, #ACA974, rgba(172, 169, 116, 0.87)); }
+.previewContainer .fire { background: linear-gradient(to bottom right, #FC0C0B, #ff6347dc); }
 .previewContainer .fighting { background: linear-gradient(to bottom right, #C66F39, #c66f39d0); }
 .previewContainer .water { background: linear-gradient(to bottom right, #539AD4, rgba(30, 143, 255, 0.87)); }
 .previewContainer .flying { background: linear-gradient(to bottom right, #4866AC, rgba(70, 131, 180, 0.856)); }
 .previewContainer .grass { background: linear-gradient(to bottom right, #52A938, #52a938d8); }
 .previewContainer .poison { background: linear-gradient(to bottom right, #7C57A1, rgba(137, 43, 226, 0.849)); }
 .previewContainer .electric { background: linear-gradient(to bottom right, #FFD700, rgba(255, 236, 139, 0.884)); }
-.previewContainer .ground { background: linear-gradient(to bottom right, #DEB887, rgba(210, 180, 140, 0.884)); }
+.previewContainer .ground { background: linear-gradient(to bottom right, #BFAC22, rgba(192, 172, 34, 0.884)); }
 .previewContainer .psychic { background: linear-gradient(to bottom right, #FF69B4, rgba(255, 20, 145, 0.884)); }
 .previewContainer .rock { background: linear-gradient(to bottom right, #B8860B, #b8870bde); }
 .previewContainer .ice { background: linear-gradient(to bottom right, #ADD8E6, rgba(176, 224, 230, 0.87)); }
-.previewContainer .bug { background: linear-gradient(to bottom right, #9A70AE, rgba(154, 112, 174, 0.897)); }
+.previewContainer .bug { background: linear-gradient(to bottom right, #91BA30, rgba(145, 186, 48, 0.897)); }
 .previewContainer .dragon { background: linear-gradient(to bottom right, #6A5ACD, rgba(71, 61, 139, 0.884)); }
 .previewContainer .ghost { background: linear-gradient(to bottom right, #4B0082, rgba(137, 43, 226, 0.89)); }
 .previewContainer .dark { background: linear-gradient(to bottom right, #0B0E0F, rgba(47, 79, 79, 0.897)); }
