@@ -1,9 +1,16 @@
-// src/utils/hooks/useDetailPage.js
+// src/utils/hooks/useDetail.js
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getPokemonByIdFromIndexedDB, getItemByIdFromIndexedDB, togglePokemonFavoriteInIndexedDB, toggleItemFavoriteInIndexedDB, getPokemonFavoritesFromIndexedDB, getItemFavoritesFromIndexedDB } from '../indexedDB';
+import {
+  getItemByIdFromIndexedDB,
+  getPokemonByIdFromIndexedDB,
+  getItemFavoritesFromIndexedDB,
+  getPokemonFavoritesFromIndexedDB,
+  toggleItemFavoriteInIndexedDB,
+  togglePokemonFavoriteInIndexedDB,
+} from '../indexedDB';
 
-const useDetailPage = (type) => {
+const useDetail = (type) => {
   const { id } = useParams();
   const [entity, setEntity] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,10 +22,10 @@ const useDetailPage = (type) => {
     const fetchData = async () => {
       try {
         let data;
-        if (type === 'pokemon') {
-          data = await getPokemonByIdFromIndexedDB(id);
-        } else if (type === 'item') {
+        if (type === 'item') {
           data = await getItemByIdFromIndexedDB(id);
+        } else if (type === 'pokemon') {
+          data = await getPokemonByIdFromIndexedDB(id);
         }
 
         if (!data) {
@@ -37,14 +44,14 @@ const useDetailPage = (type) => {
     const fetchFavorites = async () => {
       try {
         let favoritesData;
-        if (type === 'pokemon') {
-          favoritesData = await getPokemonFavoritesFromIndexedDB();
-        } else if (type === 'item') {
+        if (type === 'item') {
           favoritesData = await getItemFavoritesFromIndexedDB();
+        } else if (type === 'pokemon') {
+          favoritesData = await getPokemonFavoritesFromIndexedDB();
         }
         setFavorites(favoritesData);
       } catch (error) {
-        console.error(`Error fetching favorites:`, error);
+        console.error('Error fetching favorites:', error);
       }
     };
 
@@ -53,12 +60,12 @@ const useDetailPage = (type) => {
   }, [id, type]);
 
   const toggleFavorite = async (_id, entity) => {
-    if (type === 'pokemon') {
-      await togglePokemonFavoriteInIndexedDB(_id, entity);
-      setFavorites(await getPokemonFavoritesFromIndexedDB());
-    } else if (type === 'item') {
+    if (type === 'item') {
       await toggleItemFavoriteInIndexedDB(_id, entity);
       setFavorites(await getItemFavoritesFromIndexedDB());
+    } else if (type === 'pokemon') {
+      await togglePokemonFavoriteInIndexedDB(_id, entity);
+      setFavorites(await getPokemonFavoritesFromIndexedDB());
     }
   };
 
@@ -72,4 +79,4 @@ const useDetailPage = (type) => {
   };
 };
 
-export default useDetailPage;
+export default useDetail;
