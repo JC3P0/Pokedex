@@ -142,21 +142,21 @@
 }
 
 /* Background styling for different Pokémon types */
-.previewContainer .normal { background: linear-gradient(to bottom right, #ACA974, rgba(172, 169, 116, 0.87)); }
-.previewContainer .fire { background: linear-gradient(to bottom right, #FC0C0B, #ff6347dc); }
-.previewContainer .fighting { background: linear-gradient(to bottom right, #C66F39, #c66f39d0); }
-.previewContainer .water { background: linear-gradient(to bottom right, #539AD4, rgba(30, 143, 255, 0.87)); }
-.previewContainer .flying { background: linear-gradient(to bottom right, #4866AC, rgba(70, 131, 180, 0.856)); }
-.previewContainer .grass { background: linear-gradient(to bottom right, #52A938, #52a938d8); }
-.previewContainer .poison { background: linear-gradient(to bottom right, #7C57A1, rgba(137, 43, 226, 0.849)); }
-.previewContainer .electric { background: linear-gradient(to bottom right, #FFD700, rgba(255, 236, 139, 0.884)); }
-.previewContainer .ground { background: linear-gradient(to bottom right, #BFAC22, rgba(192, 172, 34, 0.884)); }
-.previewContainer .psychic { background: linear-gradient(to bottom right, #FF69B4, rgba(255, 20, 145, 0.884)); }
-.previewContainer .rock { background: linear-gradient(to bottom right, #B8860B, #b8870bde); }
-.previewContainer .ice { background: linear-gradient(to bottom right, #ADD8E6, rgba(176, 224, 230, 0.87)); }
-.previewContainer .bug { background: linear-gradient(to bottom right, #91BA30, rgba(145, 186, 48, 0.897)); }
-.previewContainer .dragon { background: linear-gradient(to bottom right, #6A5ACD, rgba(71, 61, 139, 0.884)); }
-.previewContainer .ghost { background: linear-gradient(to bottom right, #4B0082, rgba(137, 43, 226, 0.89)); }
-.previewContainer .dark { background: linear-gradient(to bottom right, #0B0E0F, rgba(47, 79, 79, 0.897)); }
-.previewContainer .steel { background: linear-gradient(to bottom right, #C0C0C0, rgba(169, 169, 169, 0.829)); }
-.previewContainer .fairy { background: linear-gradient(to bottom right, #FFC0CB, rgba(255, 182, 193, 0.829)); }
+.previewContainer .normal { background: linear-gradient(to bottom right, #ACA974, rgba(214, 211, 173, 0.85)); }
+.previewContainer .fire { background: linear-gradient(to bottom right, #FC0C0B, rgb(252, 54, 54, 0.85)); }
+.previewContainer .fighting { background: linear-gradient(to bottom right, #800B11, rgba(175, 29, 36, 0.85)); }
+.previewContainer .water { background: linear-gradient(to bottom right, #08517A, rgba(35, 127, 180, 0.85)); }
+.previewContainer .flying { background: linear-gradient(to bottom right, #095865, rgba(32, 143, 160, 0.85)); }
+.previewContainer .grass { background: linear-gradient(to bottom right, #204000, rgba(63, 119, 8, 0.85)); }
+.previewContainer .poison { background: linear-gradient(to bottom right, #621481, rgba(155, 52, 196, 0.85)); }
+.previewContainer .electric { background: linear-gradient(to bottom right, #979203, rgba(197, 191, 20, 0.85)); }
+.previewContainer .ground { background: linear-gradient(to bottom right, #BFAC22, rgba(230, 206, 56, 0.85)); }
+.previewContainer .psychic { background: linear-gradient(to bottom right, #8B0633, rgba(194, 24, 81, 0.85)); }
+.previewContainer .rock { background: linear-gradient(to bottom right, #474026, rgba(131, 119, 76, 0.85)); }
+.previewContainer .ice { background: linear-gradient(to bottom right, #113C43, rgba(42, 119, 131, 0.85)); }
+.previewContainer .bug { background: linear-gradient(to bottom right, #91BA30, rgba(181, 216, 99, 0.85)); }
+.previewContainer .dragon { background: linear-gradient(to bottom right, #29036A, rgba(84, 24, 189, 0.85)); }
+.previewContainer .ghost { background: linear-gradient(to bottom right, #472B53, rgba(118, 76, 136, 0.85)); }
+.previewContainer .dark { background: linear-gradient(to bottom right, #2D221C, rgba(77, 59, 50, 0.85)); }
+.previewContainer .steel { background: linear-gradient(to bottom right, #454545, rgba(122, 117, 117, 0.85)); }
+.previewContainer .fairy { background: linear-gradient(to bottom right, #F87EA7, rgba(250, 149, 182, 0.85)); }
