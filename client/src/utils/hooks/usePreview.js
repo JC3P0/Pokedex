@@ -1,4 +1,3 @@
-// src/utils/hooks/usePreview.js
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -14,23 +13,41 @@ const usePreview = (type) => {
   const [entities, setEntities] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      if (type === 'item') {
-        const items = await getItemsFromIndexedDB();
-        setEntities(items);
-        setFavorites(await getItemFavoritesFromIndexedDB());
-      } else if (type === 'pokemon') {
-        const pokemon = await getPokemonFromIndexedDB();
-        setEntities(pokemon);
-        setFavorites(await getPokemonFavoritesFromIndexedDB());
+      try {
+        if (type === 'item') {
+          const items = await getItemsFromIndexedDB();
+          if (items.length === 0) {
+            // Redirect to root if data is not loaded
+            navigate('/');
+            return;
+          }
+          setEntities(items);
+          setFavorites(await getItemFavoritesFromIndexedDB());
+        } else if (type === 'pokemon') {
+          const pokemon = await getPokemonFromIndexedDB();
+          if (pokemon.length === 0) {
+            // Redirect to root if data is not loaded
+            navigate('/');
+            return;
+          }
+          setEntities(pokemon);
+          setFavorites(await getPokemonFavoritesFromIndexedDB());
+        }
+      } catch (e) {
+        setError(e);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [type]);
+  }, [type, navigate]);
 
   const handleNavigate = (id) => {
     navigate(`/${type === 'item' ? 'items' : 'pokemon'}/${id}`);
@@ -57,6 +74,8 @@ const usePreview = (type) => {
     handleNavigate,
     toggleFavorite,
     toggleShowCategory,
+    loading,
+    error,
   };
 };
 
