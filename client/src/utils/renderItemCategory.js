@@ -57,7 +57,7 @@ const renderItemCategory = ({
             <button className={`${preview.previewFavoriteButton} ${itemsFavorites.some(f => f._id === i._id) ? preview.active : ''}`} onClick={(e) => { e.stopPropagation(); toggleItemFavorite(i._id, i); }}>
                 {itemsFavorites.some(f => f._id === i._id) ? '❤️' : '♡'}
             </button>
-            <img src={getImageOrPlaceholder(i.sprites?.default)} alt={i.name} />
+            <img src={getImageOrPlaceholder(i.sprites?.default)} alt={i.name} style={{ width: '75px' }}/>
             <p className={preview.previewName}>{capitalizeFirstLetter(i.name)}</p>
         </div>
     ));
