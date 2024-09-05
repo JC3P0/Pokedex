@@ -38,7 +38,8 @@ const BaseLayout = ({ children, loading }) => {
       </div>
       {shouldShowSearchBar() && (
         <form className="search-form">
-          <input type="text" placeholder={getSearchPlaceholder()} value={searchTerm} onChange={handleSearch} disabled={loading}/>
+          <label htmlFor="search-input" className="visually-hidden">Search</label>
+          <input type="text" id="search-input" placeholder={getSearchPlaceholder()} value={searchTerm} onChange={handleSearch} disabled={loading}/>
           <SearchSuggestions suggestions={ location.pathname === '/' ? [...filteredPokemon, ...filteredItems] : location.pathname.startsWith('/items') ? filteredItems : filteredPokemon } onClick={handleSuggestionClick}/>
         </form>
       )}
