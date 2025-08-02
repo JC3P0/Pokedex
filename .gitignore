@@ -19,7 +19,7 @@ Dockerfile
 docker-compose.yml
 # Shell scripts
 *.sh
-
+CLAUDE.md
 # Batch script and other files
 run.bat
 sources.txt
