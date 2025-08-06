@@ -29,3 +29,5 @@ commands/
 
 # Local Netlify folder
 .netlify
+
+.idea/
