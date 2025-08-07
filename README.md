@@ -13,32 +13,32 @@ The Pokédex by JC3P0 is a web application that serves as a comprehensive resour
 
 **Main Menu:**
 
-![Main Menu](screenshots/mainMenuPokemonButton.png)
+![Main Menu](screenshots/v1.1.0/mainMenuPokemonButton-v1.1.0.png)
 
 **Dynamic Search:**
 
-![Dynamic Search](screenshots/dynamicSearch.png)
+![Dynamic Search](screenshots/v1.1.0/dynamicSearch-v1.1.0.png)
 
 **Hover over pokemon to display their type(s):**
 
-![Pokémon Menu Hover](screenshots/pokemonMenuHover.png)
+![Pokémon Menu Hover](screenshots/v1.1.0/pokemonMenuHover-v1.1.0.png)
 
 **Detailed Pokemon view:**
 
-![Detailed Pokémon View](screenshots/detailedPokemonView.png)
-![Detailed Pokémon View with Shiny Sprite](screenshots/detailedPokemonViewShinySprite.png)
+![Detailed Pokémon View](screenshots/v1.1.0/detailedPokemonView-v1.1.0.png)
+![Detailed Pokémon View with Shiny Sprite](screenshots/v1.1.0/detailedPokemonViewShinySprite-v1.1.0.png)
 
 **Detailed item view:**
 
-![Detailed Item View](screenshots/detailedItemView.png)
+![Detailed Item View](screenshots/v1.1.0/detailedItemView-v1.1.0.png)
 
 **Favorites view:**
 
-![Favorites](screenshots/favorites.png)
+![Favorites](screenshots/v1.1.0/favorites-v1.1.0.png)
 
 **Demo:**
 
-![Demo Video](screenshots/demogif.gif)
+![Demo Video](screenshots/v1.1.0/demogif-v1.1.0.gif)
 
 ## License
 This project is licensed under the MIT License.
