@@ -37,7 +37,7 @@
 .base-layout {
   text-align: center;
   padding: 20px;
-  background-image: url('https://raw.githubusercontent.com/JC3P0/Pokedex/main/client/src/assets/background-image.png');
+  background-image: url('https://raw.githubusercontent.com/JC3P0/misc_assets/main/Pokedex/background-image.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

@@ -5,7 +5,7 @@ import useSearch from '../utils/hooks/useSearch';
 import SearchSuggestions from './SearchSuggestions';
 import '../styles/BaseLayout.css';
 
-const pokedexImageUrl = 'https://raw.githubusercontent.com/JC3P0/Pokedex/main/client/src/assets/pokedex-image.png';
+const pokedexImageUrl = 'https://raw.githubusercontent.com/JC3P0/misc_assets/main/Pokedex/pokedex-image.png';
 
 const BaseLayout = ({ children, loading }) => {
   const navigate = useNavigate();
