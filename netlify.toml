@@ -13,6 +13,9 @@
 [functions.timeout]
   default = 120
 
+[functions."keepDbAlive"]
+  schedule = "@weekly"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
