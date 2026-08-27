@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
+const dns = require('dns');
+
+// Netlify Functions run on AWS Lambda, where the default DNS resolver can
+// fail to resolve the SRV records that mongodb+srv:// connection strings
+// depend on (Error: querySrv ENOTFOUND). Pointing explicitly at public DNS
+// servers works around that.
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 const Item = require('../../server/models/Item');
 
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(process.env.DATABASE_URL, {}).catch((err) => {
+  console.error('MongoDB connection error:', err);
 });
 
 exports.handler = async (event, context) => {
